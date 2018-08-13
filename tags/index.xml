@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on rullzers blog</title>
+    <link>https://rullzer.com/tags/</link>
+    <description>Recent content in Tags on rullzers blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>(c) 2015 Roeland Jago Douma -  This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/)</copyright>
+    <lastBuildDate>Mon, 05 Sep 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://rullzer.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Appframework</title>
+      <link>https://rullzer.com/tags/appframework/</link>
+      <pubDate>Mon, 05 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/tags/appframework/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Appimage</title>
+      <link>https://rullzer.com/tags/appimage/</link>
+      <pubDate>Mon, 29 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/tags/appimage/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Management</title>
+      <link>https://rullzer.com/tags/data-management/</link>
+      <pubDate>Thu, 03 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/tags/data-management/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Desktop Client</title>
+      <link>https://rullzer.com/tags/desktop-client/</link>
+      <pubDate>Mon, 29 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/tags/desktop-client/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dropit</title>
+      <link>https://rullzer.com/tags/dropit/</link>
+      <pubDate>Tue, 16 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/tags/dropit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nextcloud</title>
+      <link>https://rullzer.com/tags/nextcloud/</link>
+      <pubDate>Tue, 16 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/tags/nextcloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ocs</title>
+      <link>https://rullzer.com/tags/ocs/</link>
+      <pubDate>Mon, 05 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/tags/ocs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Owncloud</title>
+      <link>https://rullzer.com/tags/owncloud/</link>
+      <pubDate>Thu, 03 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/tags/owncloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Php</title>
+      <link>https://rullzer.com/tags/php/</link>
+      <pubDate>Tue, 13 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/tags/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Previews</title>
+      <link>https://rullzer.com/tags/previews/</link>
+      <pubDate>Mon, 12 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/tags/previews/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

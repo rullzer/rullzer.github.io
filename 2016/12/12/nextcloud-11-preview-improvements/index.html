@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Nextcloud 11 Preview Improvements  &middot; rullzers blog</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="Nextcloud, Previews, ">
+
+
+<meta property="og:title" content="Nextcloud 11 Preview Improvements  &middot; rullzers blog ">
+<meta property="og:site_name" content="rullzers blog"/>
+<meta property="og:url" content="https://rullzer.com/2016/12/12/nextcloud-11-preview-improvements/" />
+<meta property="og:locale" content="en-gb">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2016-12-12T00:00:00Z" />
+<meta property="og:article:modified_time" content="2016-12-12T00:00:00Z" />
+
+  
+    
+<meta property="og:article:tag" content="Nextcloud">
+    
+<meta property="og:article:tag" content="Previews">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="Nextcloud 11 Preview Improvements" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="https://rullzer.com/2016/12/12/nextcloud-11-preview-improvements/" />
+<meta name="twitter:domain" content="https://rullzer.com/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Nextcloud 11 Preview Improvements",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2016-12-12",
+    "description": "",
+    "wordCount": 625
+  }
+</script>
+
+
+
+<link rel="canonical" href="https://rullzer.com/2016/12/12/nextcloud-11-preview-improvements/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://rullzer.com/touch-icon-144-precomposed.png">
+<link href="https://rullzer.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.46" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/highlight/default.css">
+
+  
+  
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="https://rullzer.com/">
+  rullzer
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="https://rullzer.com/">home</a>
+
+
+  
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+
+
+<a id="contact-link-github" class="contact_link" href="https://github.com/rullzer">
+  <span class="fa fa-github-square"></span><span>github</span></a>
+
+
+
+
+
+<a id="contact-link-linkedin" class="contact_link" href="https://www.linkedin.com/in/rullzer">
+  <span class="fa fa-linkedin-square"></span><span>linkedin</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>Nextcloud 11 Preview Improvements
+</h1>
+
+  <div class="metas">
+<time datetime="2016-12-12">12 Dec, 2016</time>
+
+
+  
+  &middot; Read in about 3 min
+  &middot; (625 Words)
+  <br>
+  
+<a class="label" href="https://rullzer.com/tags/nextcloud">Nextcloud</a>
+
+<a class="label" href="https://rullzer.com/tags/previews">Previews</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<p>If you store images on your Nextcloud there is a big change that you
+have previews enabled. Previews are used for the tiny thumbnails in the
+file list but also for scaled down images in gallery for example.
+Because nobody wants transfer their 30 mega pixel photos all the time.</p>
+
+<p>In Nextcloud 11 we have several nice improvements for you regarding
+previews. Including an shiny new app to pre-generate previews!</p>
+
+<h2 id="serving-previews">Serving previews</h2>
+
+<p>First of all we changed the way previews are served to the end user. If
+a preview was generated we would first construct an image object in
+memory and then serve the data from that image to the user. This created
+a lot of overhead.</p>
+
+<p>So the first step is skipping the image parsing in memory. If a preview
+is created once we just serve the data from that file. This saves
+precious RAM and CPU cycles.</p>
+
+<h2 id="etag-validation">Etag validation</h2>
+
+<p>By default we cache previews for 24 hours. However, after those 24 hours
+we would just request the same preview object again. While for a
+majority of the preview files nothing would have changed at all.</p>
+
+<p>We now actually look at the headers a client sends us and if it is the
+same file (etag/last modified date). We just return the good old 304
+status code. To indicate nothing has changed. We can do this by just
+accessing the database. So no need to go to the slow storage unless we
+have to actually serve preview data.</p>
+
+<h2 id="limiting-preview-sizes">Limiting preview sizes</h2>
+
+<p>Let say you request a preview of an image of 250 by 250. But the next
+time you request an image of 252 by 252. Now it makes no sense to
+generate a new preview. We should serve similar preview sizes as the
+same file. There was already some code that handled this but we upgraded
+it in Nextcloud 11.</p>
+
+<p>The algorithm we use now rounds your image up to the nearest power of 2.
+So you get at least an image of the size you requested but it might be a
+bit bigger. But your browser is also very good at resizing it a bit for
+you then. This makes sure that your disk does not fill up with 10K
+previews per file and that the server can often just serve the same
+file.</p>
+
+<h2 id="shared-previews">Shared previews</h2>
+
+<p>Up until now we would generate previews per user. So if Alice shared a
+folder full of their holiday pictures with Bob we could generate
+previews for both Alice and Bob. This separation lead to multiple
+issues:</p>
+
+<ul>
+<li>Double the space required</li>
+<li>Double the CPU cycles for preview generation</li>
+<li>If Bob modified a file the preview of Alice would not get updated</li>
+<li>When Bob opens the folder all the previews still have to be
+generated which requires him to wait until he can browse them</li>
+</ul>
+
+<p>As of Nextcloud 11 we share previews. Which means that we have a single
+location to store previews. This solves the problems Alice and Bob had
+as described above.</p>
+
+<h2 id="pre-generation">Pre-generation</h2>
+
+<p>The downside of the new preview approach is that we need to drop all the
+existing previews. Because of certain bugs in the old preview system
+just moving stuff over is not possible.</p>
+
+<p>To over come this we have been working on an app. This app allows you to
+do a one time run to generate all the previews.</p>
+
+<p>However the app is capable of doing more. It will listen to writes and
+keep a list of all those files. Then once you run a command it will
+start requesting previews for all those files. This can make your
+overall experience more smooth.</p>
+
+<p>That way you can lets your server generate previews during the night for
+example.</p>
+
+<p>Get the app in the <a href="https://apps.nextcloud.com/apps/previewgenerator">appstore</a>.</p>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="https://rullzer.com/2016/09/13/nextcloud-supported-php-versions/" title="Nextcloud supported PHP Versions">
+      Previous
+    </a>
+    
+
+    
+    <a class="next" href="https://rullzer.com/2017/05/29/nextcloud-desktop-client-appimage/" title="Nextcloud Desktop Client AppImage">
+      Next
+    </a>
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2015 Roeland Jago Douma -  This work is licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+    
+  </body>
+</html>
+

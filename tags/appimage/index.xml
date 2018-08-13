@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Appimage on rullzers blog</title>
+    <link>https://rullzer.com/tags/appimage/</link>
+    <description>Recent content in Appimage on rullzers blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>(c) 2015 Roeland Jago Douma -  This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/)</copyright>
+    <lastBuildDate>Mon, 29 May 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://rullzer.com/tags/appimage/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Nextcloud Desktop Client AppImage</title>
+      <link>https://rullzer.com/2017/05/29/nextcloud-desktop-client-appimage/</link>
+      <pubDate>Mon, 29 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/2017/05/29/nextcloud-desktop-client-appimage/</guid>
+      <description>Already back in October of 2016 probonopd made an AppImage for the Nextcloud Desktop Client. I must admit that back then I did not immediately try it out since I just run the client from source.
+However, this has changed over the last few weeks as we wanted to start providing binary packages for Linux as well. When I was reading up on AppImage I got more excited. And since there already was a script to generate the AppImage I quickly built my very first AppImage.</description>
+    </item>
+    
+  </channel>
+</rss>

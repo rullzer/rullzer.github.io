@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Previews on rullzers blog</title>
+    <link>https://rullzer.com/tags/previews/</link>
+    <description>Recent content in Previews on rullzers blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>(c) 2015 Roeland Jago Douma -  This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/)</copyright>
+    <lastBuildDate>Mon, 12 Dec 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://rullzer.com/tags/previews/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Nextcloud 11 Preview Improvements</title>
+      <link>https://rullzer.com/2016/12/12/nextcloud-11-preview-improvements/</link>
+      <pubDate>Mon, 12 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/2016/12/12/nextcloud-11-preview-improvements/</guid>
+      <description>If you store images on your Nextcloud there is a big change that you have previews enabled. Previews are used for the tiny thumbnails in the file list but also for scaled down images in gallery for example. Because nobody wants transfer their 30 mega pixel photos all the time.
+In Nextcloud 11 we have several nice improvements for you regarding previews. Including an shiny new app to pre-generate previews!</description>
+    </item>
+    
+  </channel>
+</rss>

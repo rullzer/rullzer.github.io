@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Introducing DropIt  &middot; rullzers blog</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="Nextcloud, DropIt, ">
+
+
+<meta property="og:title" content="Introducing DropIt  &middot; rullzers blog ">
+<meta property="og:site_name" content="rullzers blog"/>
+<meta property="og:url" content="https://rullzer.com/2018/01/16/introducing-dropit/" />
+<meta property="og:locale" content="en-gb">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2018-01-16T00:00:00Z" />
+<meta property="og:article:modified_time" content="2018-01-16T00:00:00Z" />
+
+  
+    
+<meta property="og:article:tag" content="Nextcloud">
+    
+<meta property="og:article:tag" content="DropIt">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="Introducing DropIt" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="https://rullzer.com/2018/01/16/introducing-dropit/" />
+<meta name="twitter:domain" content="https://rullzer.com/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Introducing DropIt",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2018-01-16",
+    "description": "",
+    "wordCount": 178
+  }
+</script>
+
+
+
+<link rel="canonical" href="https://rullzer.com/2018/01/16/introducing-dropit/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://rullzer.com/touch-icon-144-precomposed.png">
+<link href="https://rullzer.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.46" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/highlight/default.css">
+
+  
+  
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="https://rullzer.com/">
+  rullzer
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="https://rullzer.com/">home</a>
+
+
+  
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+
+
+<a id="contact-link-github" class="contact_link" href="https://github.com/rullzer">
+  <span class="fa fa-github-square"></span><span>github</span></a>
+
+
+
+
+
+<a id="contact-link-linkedin" class="contact_link" href="https://www.linkedin.com/in/rullzer">
+  <span class="fa fa-linkedin-square"></span><span>linkedin</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>Introducing DropIt
+</h1>
+
+  <div class="metas">
+<time datetime="2018-01-16">16 Jan, 2018</time>
+
+
+  
+  &middot; Read in about 1 min
+  &middot; (178 Words)
+  <br>
+  
+<a class="label" href="https://rullzer.com/tags/nextcloud">Nextcloud</a>
+
+<a class="label" href="https://rullzer.com/tags/dropit">DropIt</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  <p>A few weeks ago I was chatting with Tobias one of the Android engineers
+at Nextcloud. He mentioned how he oftened wanted to just share a file
+quickly with somebody or just share some text. Basically your own
+privately hosted pastebin.</p>
+
+<p>This got me thinking about the amount of files that are stored on my
+Nextcloud that are just sitting there because I wanted to quickly share
+them with somebody but I forgot to delete them afterwrads. So long story
+short I decided to spend some time to write a little Nextcloud app that
+allows you to do this.</p>
+
+<p>So I\&rsquo;m excited to introduce
+<a href="https://apps.nextcloud.com/apps/dropit">DropIt</a> to the world. It is
+available in the app store for Nextcloud 13!</p>
+
+<p>The app ties together a lot of functionality already available in
+Nextcloud. There is a simple interface to upload your files or text (any
+help on the UI/UX side is appreciated!). And a cron job that deletes
+files older than 2 weeks.</p>
+
+<p>So go check it out. And I\&rsquo;m looking forward to all your pull requests
+to the <a href="https://github.com/rullzer/dropit">github repository</a>.</p>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="https://rullzer.com/2017/05/29/nextcloud-desktop-client-appimage/" title="Nextcloud Desktop Client AppImage">
+      Previous
+    </a>
+    
+
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2015 Roeland Jago Douma -  This work is licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+    
+  </body>
+</html>
+

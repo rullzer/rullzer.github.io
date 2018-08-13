@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rullzers blog</title>
+    <link>https://rullzer.com/</link>
+    <description>Recent content on rullzers blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>(c) 2015 Roeland Jago Douma -  This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/)</copyright>
+    <lastBuildDate>Tue, 16 Jan 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://rullzer.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Introducing DropIt</title>
+      <link>https://rullzer.com/2018/01/16/introducing-dropit/</link>
+      <pubDate>Tue, 16 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/2018/01/16/introducing-dropit/</guid>
+      <description>A few weeks ago I was chatting with Tobias one of the Android engineers at Nextcloud. He mentioned how he oftened wanted to just share a file quickly with somebody or just share some text. Basically your own privately hosted pastebin.
+This got me thinking about the amount of files that are stored on my Nextcloud that are just sitting there because I wanted to quickly share them with somebody but I forgot to delete them afterwrads.</description>
+    </item>
+    
+    <item>
+      <title>Nextcloud Desktop Client AppImage</title>
+      <link>https://rullzer.com/2017/05/29/nextcloud-desktop-client-appimage/</link>
+      <pubDate>Mon, 29 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/2017/05/29/nextcloud-desktop-client-appimage/</guid>
+      <description>Already back in October of 2016 probonopd made an AppImage for the Nextcloud Desktop Client. I must admit that back then I did not immediately try it out since I just run the client from source.
+However, this has changed over the last few weeks as we wanted to start providing binary packages for Linux as well. When I was reading up on AppImage I got more excited. And since there already was a script to generate the AppImage I quickly built my very first AppImage.</description>
+    </item>
+    
+    <item>
+      <title>Nextcloud 11 Preview Improvements</title>
+      <link>https://rullzer.com/2016/12/12/nextcloud-11-preview-improvements/</link>
+      <pubDate>Mon, 12 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/2016/12/12/nextcloud-11-preview-improvements/</guid>
+      <description>If you store images on your Nextcloud there is a big change that you have previews enabled. Previews are used for the tiny thumbnails in the file list but also for scaled down images in gallery for example. Because nobody wants transfer their 30 mega pixel photos all the time.
+In Nextcloud 11 we have several nice improvements for you regarding previews. Including an shiny new app to pre-generate previews!</description>
+    </item>
+    
+    <item>
+      <title>Nextcloud supported PHP Versions</title>
+      <link>https://rullzer.com/2016/09/13/nextcloud-supported-php-versions/</link>
+      <pubDate>Tue, 13 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/2016/09/13/nextcloud-supported-php-versions/</guid>
+      <description>As many of you probably know PHP 7.1 is planned for release at the end of November. As a preparation for this we are already running our test suite against the PHP 7.1 RC1. And we feel confident that Nextcloud 11 will run smoothly on the PHP 7.1 final for all you bleeding-edge sysadmins out there! But if you can&amp;rsquo;t wait try out the daily.
+At the same time we are adding PHP 7.</description>
+    </item>
+    
+    <item>
+      <title>OCS Supported by the AppFramework</title>
+      <link>https://rullzer.com/2016/09/05/ocs-supported-by-the-appframework/</link>
+      <pubDate>Mon, 05 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/2016/09/05/ocs-supported-by-the-appframework/</guid>
+      <description>Nextcloud exposes some APIs to the outside works over HTTP. There is of cou rse our webdav endpoint. That, among other things, allows you to retrieve and store your files or update your calendar. Probably our second most used endpoint is the OCS Share API. This is used by a lot of clients that connect to your Nextcloud to share files. As the name suggest this is an OCS (Open-Collaboration-Services) API of which we have a few.</description>
+    </item>
+    
+    <item>
+      <title>ownCloud is not a backup!</title>
+      <link>https://rullzer.com/2015/09/03/owncloud-is-not-a-backup/</link>
+      <pubDate>Thu, 03 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/2015/09/03/owncloud-is-not-a-backup/</guid>
+      <description>I see a lot of people are setting up ownCloud these days that do not think about what it really means to do their own data management.
+A lot of people have ownCloud running on a server somewhere and have the desktop sync client running on their laptop. They think their data is safe because if their laptop gets stolen or crashes the data is still on the server. Or that if the server crashes the data is still on the laptop.</description>
+    </item>
+    
+  </channel>
+</rss>

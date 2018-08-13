@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Appframework on rullzers blog</title>
+    <link>https://rullzer.com/tags/appframework/</link>
+    <description>Recent content in Appframework on rullzers blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>(c) 2015 Roeland Jago Douma -  This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/)</copyright>
+    <lastBuildDate>Mon, 05 Sep 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://rullzer.com/tags/appframework/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>OCS Supported by the AppFramework</title>
+      <link>https://rullzer.com/2016/09/05/ocs-supported-by-the-appframework/</link>
+      <pubDate>Mon, 05 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/2016/09/05/ocs-supported-by-the-appframework/</guid>
+      <description>Nextcloud exposes some APIs to the outside works over HTTP. There is of cou rse our webdav endpoint. That, among other things, allows you to retrieve and store your files or update your calendar. Probably our second most used endpoint is the OCS Share API. This is used by a lot of clients that connect to your Nextcloud to share files. As the name suggest this is an OCS (Open-Collaboration-Services) API of which we have a few.</description>
+    </item>
+    
+  </channel>
+</rss>
