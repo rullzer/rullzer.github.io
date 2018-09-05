@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://rullzer.com/2018/09/05/improved-apppasswords-in-nextcloud-14/</loc>
+    <lastmod>2018-09-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://rullzer.com/2018/01/16/introducing-dropit/</loc>
     <lastmod>2018-01-16T00:00:00+00:00</lastmod>
   </url>
@@ -45,6 +50,12 @@
   </url>
   
   <url>
+    <loc>https://rullzer.com/tags/apppasswords/</loc>
+    <lastmod>2018-09-05T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://rullzer.com/tags/data-management/</loc>
     <lastmod>2015-09-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -63,8 +74,14 @@
   </url>
   
   <url>
+    <loc>https://rullzer.com/tags/encryption/</loc>
+    <lastmod>2018-09-05T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://rullzer.com/tags/nextcloud/</loc>
-    <lastmod>2018-01-16T00:00:00+00:00</lastmod>
+    <lastmod>2018-09-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -88,7 +105,7 @@
   
   <url>
     <loc>https://rullzer.com/post/</loc>
-    <lastmod>2018-01-16T00:00:00+00:00</lastmod>
+    <lastmod>2018-09-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -111,7 +128,7 @@
   
   <url>
     <loc>https://rullzer.com/</loc>
-    <lastmod>2018-01-16T00:00:00+00:00</lastmod>
+    <lastmod>2018-09-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

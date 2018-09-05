@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Encryption on rullzers blog</title>
+    <link>https://rullzer.com/tags/encryption/</link>
+    <description>Recent content in Encryption on rullzers blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>(c) 2015 Roeland Jago Douma -  This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/)</copyright>
+    <lastBuildDate>Wed, 05 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://rullzer.com/tags/encryption/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Improved AppPasswords in Nextcloud 14</title>
+      <link>https://rullzer.com/2018/09/05/improved-apppasswords-in-nextcloud-14/</link>
+      <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/2018/09/05/improved-apppasswords-in-nextcloud-14/</guid>
+      <description>The app passwords have been available in Nextcloud for some time now. They were first introduced when we added second factor authentication to Nextcloud, as you still want to have a way to connect your mobile and desktop clients to your account. In the early days this was all manual labor.
+In the last year we have added support for app passwords to our mobile clients and the desktop client is following soon.</description>
+    </item>
+    
+  </channel>
+</rss>
