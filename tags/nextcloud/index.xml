@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <copyright>(c) 2015 Roeland Jago Douma -  This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/)</copyright>
-    <lastBuildDate>Wed, 05 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 18 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://rullzer.com/tags/nextcloud/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Towards a stricter Content Security Policy</title>
+      <link>https://rullzer.com/2018/10/18/towards-a-stricter-content-security-policy/</link>
+      <pubDate>Thu, 18 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/2018/10/18/towards-a-stricter-content-security-policy/</guid>
+      <description>A Content Security Policy (CSP) can be used to protect against Cross Site Scripting (XSS) attacks. This is done by having the server tell the browser what resources (executable script, images, etc) can be loaded from where. All this is told to the browser via a header, so if the actual page tries to do something it is not allowed the browser will block it.
+At Nextcloud we have deployed a CSP for a while now that limited the resources to be loaded mainly to the domain your Nextcloud is running on.</description>
+    </item>
     
     <item>
       <title>Improved AppPasswords in Nextcloud 14</title>
