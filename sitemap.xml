@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://rullzer.com/2018/10/19/two-factor-via-nextcloud-notifications/</loc>
+    <lastmod>2018-10-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://rullzer.com/2018/10/18/towards-a-stricter-content-security-policy/</loc>
     <lastmod>2018-10-18T00:00:00+00:00</lastmod>
   </url>
@@ -86,7 +91,7 @@
   
   <url>
     <loc>https://rullzer.com/tags/nextcloud/</loc>
-    <lastmod>2018-10-18T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -110,7 +115,7 @@
   
   <url>
     <loc>https://rullzer.com/post/</loc>
-    <lastmod>2018-10-18T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -122,7 +127,7 @@
   
   <url>
     <loc>https://rullzer.com/tags/security/</loc>
-    <lastmod>2018-10-18T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -134,7 +139,7 @@
   
   <url>
     <loc>https://rullzer.com/</loc>
-    <lastmod>2018-10-18T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
