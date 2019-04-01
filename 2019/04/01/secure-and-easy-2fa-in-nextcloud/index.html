@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Security &middot; rullzers blog</title>
+    <title>Secure and Easy 2FA in Nextcloud &middot; rullzers blog</title>
 
     <meta name="description" content="">
 
     <meta name="generator" content="Hugo 0.54.0" />
     <meta name="twitter:card" content="summary">
     
-    <meta name="twitter:title" content="Security &middot; rullzers blog">
+    <meta name="twitter:title" content="Secure and Easy 2FA in Nextcloud &middot; rullzers blog">
     <meta name="twitter:description" content="">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Security &middot; rullzers blog">
+    <meta property="og:title" content="Secure and Easy 2FA in Nextcloud &middot; rullzers blog">
     <meta property="og:description" content="">
 
     <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
@@ -64,7 +64,6 @@
         <div>
             
             <div class="posts">
-                
                 <h1 class="content-subhead">01 Apr 2019, 00:00</h1>
                 <section class="post">
                     <header class="post-header">
@@ -76,7 +75,7 @@
                             
                         </p>
                     </header>
-
+                    
                     <div class="post-description">
                         <p>At Nextcloud we are focused on security and usability. Often these two
 things conflict. In the last few months we have been working hard to
@@ -192,91 +191,9 @@ providers. Some javascript to make the frontend work nicely etc.</p>
 <p>Testing is much appreciated, as well as feedback, suggestions or pull requests. Please all leave them at <a href="https://github.com/rullzer/twofactor_itisreallyme">github</a>.</p>
 
                     </div>
+                    
                 </section>
-                
-                <h1 class="content-subhead">19 Oct 2018, 00:00</h1>
-                <section class="post">
-                    <header class="post-header">
-
-                        <a href="https://rullzer.com/2018/10/19/two-factor-via-nextcloud-notifications/" class="post-title">Two-Factor via Nextcloud Notifications</a>
-
-                        <p class="post-meta">
-                            
-                            
-                        </p>
-                    </header>
-
-                    <div class="post-description">
-                        <p>I&rsquo;m happy to announce a new two-factor provider for your Nextcloud: the
-<em>Notifications Provider</em>. This provider utilizes your existing logged in
-devices to grant new devices access to your Nextcloud.</p>
-
-<blockquote>
-<p>Note: the app is still under heavy development. Still we appreciate testing
-and feedback!</p>
-</blockquote>
-
-<p>The flow is simple. You enable the provider in your personal security settings.
-Then the next time you log in you can chose to authenticate using a device that
-is already logged in to your account.</p>
-
-<img src="/static/images/posts/2FA-Notifications/login.png" alt="" class="pure-img" >
-
-<p>Now a notification is dispatched. This is delivered to all your devices, which
-means that you even get push notifications! That might just look something like:</p>
-
-<img src="/static/images/posts/2FA-Notifications/android_push.png" alt="" class="pure-img" >
-
-<p>You can approve or cancel the login from any of your devices. If you approved
-the login then you will be automatically logged in.</p>
-
-<p>You can grab the app from the <a href="https://apps.nextcloud.com/apps/twofactor_nextcloud_notification">app store</a>. And
-your feedback, suggestions or pull requests are welcome on <a href="https://github.com/nickv-nextcloud/twofactor_nextcloud_notification">github</a>.</p>
-
-                    </div>
-                </section>
-                
-                <h1 class="content-subhead">18 Oct 2018, 00:00</h1>
-                <section class="post">
-                    <header class="post-header">
-
-                        <a href="https://rullzer.com/2018/10/18/towards-a-stricter-content-security-policy/" class="post-title">Towards a stricter Content Security Policy</a>
-
-                        <p class="post-meta">
-                            
-                            
-                        </p>
-                    </header>
-
-                    <div class="post-description">
-                        
-
-<p>A Content Security Policy (<em>CSP</em>) can be used to protect against Cross Site Scripting (<em>XSS</em>) attacks. This is done by having the server tell the browser what resources (executable script, images, etc) can be loaded from where. All this is told to the browser via a header, so if the actual page tries to do something it is not allowed the browser will block it.</p>
-
-<p>At Nextcloud we have deployed a <em>CSP</em> for a while now that limited the resources to be loaded mainly to the domain your Nextcloud is running on. So by default it is not possible to load a random script from somewhere on the web.</p>
-
-<p>We also added a nonce so that only javascript with the proper nonce set would even get execute by (modern) browsers.</p>
-
-<p>Now because of the way a lot of our javascript code and a lot of 3rdparty javascript code was written we did allow <strong>unsafe-eval</strong>. Which allowed the execution of <strong>eval</strong>. This function is probably best known for being a well known <em>XSS</em> attack vector.</p>
-
-<h1 id="dropping-unsafe-eval">Dropping unsafe-eval</h1>
-
-<p>Of course I would not be writing this if we did not change anything about this behavior. Which brings me to Nextcloud 15 where we will disallow <strong>unsafe-eval</strong> by default in our <em>CSP</em>. This means that your Nextcloud will, by default, not permit execution of <strong>eval</strong>. Which results in a safer Nextcloud.</p>
-
-<h2 id="information-for-developers">Information for developers</h2>
-
-<p>We have tried to make the transition to a stricter <em>CSP</em> as smooth as possible. However it could be that if you have written a Nextcloud app that you need to take action.</p>
-
-<p>We are actively checking applications if they still work as expected and submitting pull requests. But of course help is appreciated. The easiest way to verify is to download the latest <a href="https://download.nextcloud.com/server/daily/latest-master.zip">Nextcloud daily</a> and try out your app. Be sure to have your developer tools open and keep an eye on the console. If the <em>CSP</em> is violated a message will be shown there.</p>
-
-<p>If you need help feel free to mention me (<em>@rullzer</em>) on github or drop by in <a href="https://webchat.freenode.net/">#nextcloud-dev on Freenode</a>.</p>
-
-                    </div>
-                </section>
-                
             </div>
-            
-
             <div class="footer">
     <div class="pure-menu pure-menu-horizontal pure-menu-open">
         <ul>
@@ -289,6 +206,7 @@ your feedback, suggestions or pull requests are welcome on <a href="https://gith
         </div>
     </div>
 </div>
+
 
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

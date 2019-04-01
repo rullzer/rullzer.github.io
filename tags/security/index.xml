@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <copyright>(c) 2015 Roeland Jago Douma -  This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/)</copyright>
-    <lastBuildDate>Fri, 19 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://rullzer.com/tags/security/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Secure and Easy 2FA in Nextcloud</title>
+      <link>https://rullzer.com/2019/04/01/secure-and-easy-2fa-in-nextcloud/</link>
+      <pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/2019/04/01/secure-and-easy-2fa-in-nextcloud/</guid>
+      <description>At Nextcloud we are focused on security and usability. Often these two things conflict. In the last few months we have been working hard to make sure that two-factor authentication is easy to setup and easy to use for all users!
+Without much further delay. I&amp;rsquo;m proud to introduce the next step in two-factor authentication the It is really me - Provider.
+ Note: the app is still under heavy development.</description>
+    </item>
     
     <item>
       <title>Two-Factor via Nextcloud Notifications</title>
