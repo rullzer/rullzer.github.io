@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <copyright>(c) 2015 Roeland Jago Douma -  This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/)</copyright>
-    <lastBuildDate>Mon, 01 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Sep 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://rullzer.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Certificate lifetime analysis</title>
+      <link>https://rullzer.com/2019/09/06/certificate-lifetime-analysis/</link>
+      <pubDate>Fri, 06 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/2019/09/06/certificate-lifetime-analysis/</guid>
+      <description>Currently a vote is ongoing in the Server Certificate Working Group. The vote is with regards to the SC22 ballot that would limit certificate lifetime to a maximum of 1 year.
+Due to the discussion and controversy around SC I decided to dive into some data to see what the actual lifetime of certificates is in practice. Now any selection will be biased to some degree. However taking the Alexa top 1 million crawls seems like a fair selection and should provide insights into the biggest websites out there.</description>
+    </item>
     
     <item>
       <title>Secure and Easy 2FA in Nextcloud</title>

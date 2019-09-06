@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OCS Supported by the AppFramework &middot; rullzers blog</title>
+    <title>Security headers in Nextcloud 17 &middot; rullzers blog</title>
 
     <meta name="description" content="">
 
     <meta name="generator" content="Hugo 0.57.2" />
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="roelandjago" />
-    <meta name="twitter:title" content="OCS Supported by the AppFramework &middot; rullzers blog">
+    
+    <meta name="twitter:title" content="Security headers in Nextcloud 17 &middot; rullzers blog">
     <meta name="twitter:description" content="">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="OCS Supported by the AppFramework &middot; rullzers blog">
+    <meta property="og:title" content="Security headers in Nextcloud 17 &middot; rullzers blog">
     <meta property="og:description" content="">
 
     <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
@@ -64,11 +64,11 @@
         <div>
             
             <div class="posts">
-                <h1 class="content-subhead">05 Sep 2016, 00:00</h1>
+                <h1 class="content-subhead">30 Aug 2019, 00:00</h1>
                 <section class="post">
                     <header class="post-header">
 
-                        <a href="https://rullzer.com/2016/09/05/ocs-supported-by-the-appframework/" class="post-title">OCS Supported by the AppFramework</a>
+                        <a href="https://rullzer.com/2019/08/30/security-headers-in-nextcloud-17/" class="post-title">Security headers in Nextcloud 17</a>
 
                         <p class="post-meta">
                             
@@ -77,38 +77,26 @@
                     </header>
                     
                     <div class="post-description">
-                        <p>Nextcloud exposes some APIs to the outside works over HTTP. There is of
-cou rse our <a href="https://en.wikipedia.org/wiki/WebDAV">webdav</a> endpoint. That, among other things, allows you to
-retrieve and store your files or update your calendar. Probably our
-second most used endpoint is the <a href="https://docs.nextcloud.com/server/10/developer_manual/core/ocs-share-api.html">OCS Share API</a>. This is used by a lot
-of clients that connect to your Nextcloud to share files. As the name
-suggest this is an OCS (Open-Collaboration-Services) API of which we
-have a few.</p>
+                        
 
-<p>The OCS API has been around for quite some time now. And it was in need
-for some love. Which is why I am glad to announce that starting from
-Nextcloud 11 you can build OCS API endpoints using our AppFramework.</p>
+<p>The third beta on Nextcloud 17 has just been released and that is as good a time
+as any to update you on the Nextcloud security header changes that are coming to
+you in Nextcloud 17.</p>
 
-<p>This brings a lot of improvements. Some examples:</p>
+<h1 id="content-security-policy">Content Security Policy</h1>
 
-<ul>
-<li>Automatic dependency injection: This makes writing code much more
-fun. Your Controllers just specify that is required and most of the
-time the AppFramework will figure out how and where to get the
-dependencies.</li>
-<li>Security by default: By default, a lot of security hardenings are in
-place. You can opt out of some (like for public routes). But this
-makes it harder to mess up.</li>
-<li>No more static classes: This will make it easier and faster to test
-your classes.</li>
-</ul>
+<p>The form-action directive has been added to the CSP. By default this will only
+allow forms to post to &lsquo;self&rsquo;. This means that all form submissions by default
+have to be submited to the origin.</p>
 
-<p>And of course this also means your API will directly benefit from
-enhancements we make in the AppFramework.</p>
+<p>&lsquo;unsafe-eval&rsquo; has been disabled by default for some time now. But please do
+note that the ability for apps to overwrite this will disappear in a future
+version of Nextcloud. So if you have not already, fix your code!</p>
 
-<p>We will of course still support the current approach to create OCS API
-endpoints for the foreseeable future. Feel free to reach out to us on
-<a href="https://help.nextcloud.com/c/dev/app-dev">help.nextcloud.com</a> if you need help.</p>
+<h1 id="feature-policy">Feature Policy</h1>
+
+<p>With Nextcloud 17 a new shiny security header is shipper. The feature policy
+header tells your browser what features it can use.</p>
 
                     </div>
                     

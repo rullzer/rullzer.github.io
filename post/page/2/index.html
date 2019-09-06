@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OCS Supported by the AppFramework &middot; rullzers blog</title>
+    <title>Posts &middot; rullzers blog</title>
 
     <meta name="description" content="">
 
     <meta name="generator" content="Hugo 0.57.2" />
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="roelandjago" />
-    <meta name="twitter:title" content="OCS Supported by the AppFramework &middot; rullzers blog">
+    <meta name="twitter:title" content="Posts &middot; rullzers blog">
     <meta name="twitter:description" content="">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="OCS Supported by the AppFramework &middot; rullzers blog">
+    <meta property="og:title" content="Posts &middot; rullzers blog">
     <meta property="og:description" content="">
 
     <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
@@ -64,56 +64,84 @@
         <div>
             
             <div class="posts">
-                <h1 class="content-subhead">05 Sep 2016, 00:00</h1>
+                
+                <h1 class="content-subhead">03 Sep 2015, 00:00</h1>
                 <section class="post">
                     <header class="post-header">
 
-                        <a href="https://rullzer.com/2016/09/05/ocs-supported-by-the-appframework/" class="post-title">OCS Supported by the AppFramework</a>
+                        <a href="https://rullzer.com/2015/09/03/owncloud-is-not-a-backup/" class="post-title">ownCloud is not a backup!</a>
 
                         <p class="post-meta">
                             
                             
                         </p>
                     </header>
-                    
+
                     <div class="post-description">
-                        <p>Nextcloud exposes some APIs to the outside works over HTTP. There is of
-cou rse our <a href="https://en.wikipedia.org/wiki/WebDAV">webdav</a> endpoint. That, among other things, allows you to
-retrieve and store your files or update your calendar. Probably our
-second most used endpoint is the <a href="https://docs.nextcloud.com/server/10/developer_manual/core/ocs-share-api.html">OCS Share API</a>. This is used by a lot
-of clients that connect to your Nextcloud to share files. As the name
-suggest this is an OCS (Open-Collaboration-Services) API of which we
-have a few.</p>
+                        
 
-<p>The OCS API has been around for quite some time now. And it was in need
-for some love. Which is why I am glad to announce that starting from
-Nextcloud 11 you can build OCS API endpoints using our AppFramework.</p>
+<p>I see a lot of people are setting up <strong>ownCloud</strong> these days that do not
+think about what it really means to do their own data management.</p>
 
-<p>This brings a lot of improvements. Some examples:</p>
+<p>A lot of people have <strong>ownCloud</strong> running on a server somewhere and have
+the desktop sync client running on their laptop. They think their data
+is safe because if their laptop gets stolen or crashes the data is still
+on the server. Or that if the server crashes the data is still on the
+laptop.</p>
+
+<p>What they have is a mirror of their data. Not a backup. A quick search
+on why mirroring is not a backup can give you all the details. But in
+short mirror is not a backup because it does not protect you against:</p>
 
 <ul>
-<li>Automatic dependency injection: This makes writing code much more
-fun. Your Controllers just specify that is required and most of the
-time the AppFramework will figure out how and where to get the
-dependencies.</li>
-<li>Security by default: By default, a lot of security hardenings are in
-place. You can opt out of some (like for public routes). But this
-makes it harder to mess up.</li>
-<li>No more static classes: This will make it easier and faster to test
-your classes.</li>
+<li>File corruption</li>
+<li>Viruses</li>
+<li>Software bug</li>
+<li>Humans (deleting a file by mistake)</li>
 </ul>
 
-<p>And of course this also means your API will directly benefit from
-enhancements we make in the AppFramework.</p>
+<p>This list is not complete but it does show the most common problems.</p>
 
-<p>We will of course still support the current approach to create OCS API
-endpoints for the foreseeable future. Feel free to reach out to us on
-<a href="https://help.nextcloud.com/c/dev/app-dev">help.nextcloud.com</a> if you need help.</p>
+<p>For example: if you delete a file by mistake on your laptop the file
+will also be removed from your <strong>ownCloud</strong>. If you only notice your
+mistake after a month it is very likely that your systems trashbin (if
+you have any) and the <strong>ownCloud</strong> trashbin have already been emptied.
+And you will have no way of restoring the file.</p>
+
+<p>So should I dump <strong>ownCloud</strong>? Absolutely not! Since <strong>ownCloud</strong> allows
+you to store all your files in 1 place it actually intergrates very
+nicely with a backup system. Just setup a (proper) backup system on the
+server that is running your <strong>ownCloud</strong>! There is plenty of material
+available on how to (properly) setup a backup system.</p>
+
+<p>So the homework of today is to make sure that a proper backup system is
+in place. Once that is done tell all the people that you know that run
+<strong>ownCloud</strong> to do the same.</p>
+
+<h2 id="note">Note:</h2>
+
+<p>The problem described here is not unique to <strong>ownCloud</strong>. If your cloud
+storage provider does not create backups for you then the only thing you
+have is a mirror.</p>
 
                     </div>
-                    
                 </section>
+                
             </div>
+            
+<div class="pagination">
+  <nav role="pagination" class="post-list-pagination">
+      
+      <a href="/post/" class="post-list-pagination-item pure-button post-list-pagination-item-prev">
+        <i class="fa fa-angle-double-left"></i>&nbsp;Newer
+      </a>
+      
+    <span class="post-list-pagination-item post-list-pagination-item-current">Page 2 of 2</span>
+    
+  </nav>
+</div>
+
+
             <div class="footer">
     <div class="pure-menu pure-menu-horizontal pure-menu-open">
         <ul>
@@ -126,7 +154,6 @@ endpoints for the foreseeable future. Feel free to reach out to us on
         </div>
     </div>
 </div>
-
 
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
