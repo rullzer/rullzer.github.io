@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nextcloud on rullzers blog</title>
@@ -6,12 +6,8 @@
     <description>Recent content in Nextcloud on rullzers blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <copyright>(c) 2015 Roeland Jago Douma -  This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/)</copyright>
-    <lastBuildDate>Mon, 01 Apr 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://rullzer.com/tags/nextcloud/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <copyright>(c) 2022 Roeland Jago Douma -  This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/)</copyright>
+    <lastBuildDate>Mon, 01 Apr 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://rullzer.com/tags/nextcloud/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Secure and Easy 2FA in Nextcloud</title>
       <link>https://rullzer.com/2019/04/01/secure-and-easy-2fa-in-nextcloud/</link>
@@ -20,7 +16,7 @@
       <guid>https://rullzer.com/2019/04/01/secure-and-easy-2fa-in-nextcloud/</guid>
       <description>At Nextcloud we are focused on security and usability. Often these two things conflict. In the last few months we have been working hard to make sure that two-factor authentication is easy to setup and easy to use for all users!
 Without much further delay. I&amp;rsquo;m proud to introduce the next step in two-factor authentication the It is really me - Provider.
- Note: the app is still under heavy development.</description>
+Note: the app is still under heavy development. Still we appreciate testing and feedback!</description>
     </item>
     
     <item>
@@ -30,8 +26,8 @@ Without much further delay. I&amp;rsquo;m proud to introduce the next step in tw
       
       <guid>https://rullzer.com/2018/10/19/two-factor-via-nextcloud-notifications/</guid>
       <description>I&amp;rsquo;m happy to announce a new two-factor provider for your Nextcloud: the Notifications Provider. This provider utilizes your existing logged in devices to grant new devices access to your Nextcloud.
- Note: the app is still under heavy development. Still we appreciate testing and feedback!
- The flow is simple. You enable the provider in your personal security settings. Then the next time you log in you can chose to authenticate using a device that is already logged in to your account.</description>
+Note: the app is still under heavy development. Still we appreciate testing and feedback!
+The flow is simple. You enable the provider in your personal security settings. Then the next time you log in you can chose to authenticate using a device that is already logged in to your account.</description>
     </item>
     
     <item>

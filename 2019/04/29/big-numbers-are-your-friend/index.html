@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big numbers are your friend &middot; rullzers blog</title>
+
+    <meta name="description" content="">
+
+    <meta name="generator" content="Hugo 0.104.3" />
+    <meta name="twitter:card" content="summary">
+    
+    <meta name="twitter:title" content="Big numbers are your friend &middot; rullzers blog">
+    <meta name="twitter:description" content="">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Big numbers are your friend &middot; rullzers blog">
+    <meta property="og:description" content="">
+
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+
+    <link rel="stylesheet" href='https://rullzer.com/css/all.min.css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="alternate" type="application/rss+xml" title="rullzers blog" href='https://rullzer.com/index.xml' />
+</head>
+<body>
+
+
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="https://rullzer.com/">rullzers blog</a></h1>
+            <h2 class="brand-tagline"></h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://twitter.com/roelandjago">
+                        <i class="fa fa-twitter"></i> Twitter
+                    </a>
+                </li>
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://github.com/rullzer">
+                        <i class="fa fa-github-alt"></i> Github
+                    </a>
+                </li>
+                
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href='https://rullzer.com/index.xml'>
+                        <i class="fa fa-rss"></i> rss
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">29 Apr 2019, 00:00</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://rullzer.com/2019/04/29/big-numbers-are-your-friend/" class="post-title">Big numbers are your friend</a>
+
+                        <p class="post-meta">
+                            
+                            
+                        </p>
+                    </header>
+                    
+                    <div class="post-description">
+                        <p>I have had several discussions over the last years regarding tokens. More precicely how secure a random token of a given size.
+This boils down to most of us (including me) having a problem grasping large numbers. But the maths for this is surprisingly simple
+and can give you confidence something is secure.
+And every time I have this discussion I think I should finally write down some things about it. During Easter the discussions came
+up again so here it finally goes.</p>
+<p>Now before I go into detail there are a few things that I assume are in place (each warrents their own post, but most likely it has been
+covered online in great detail by somebody already).</p>
+<ul>
+<li>A proper random number generator</li>
+<li>A secure way to get your token to the using party (can be a real person, can be a device)</li>
+</ul>
+<p>Without both there are probably easier ways for an attacker to obtain your token.</p>
+<h1 id="maths">Maths</h1>
+<p>The maths behind random tokens is pretty straight forward. But lets formalize it a bit. For this to work we need:</p>
+<ul>
+<li>an alphabet containing <code>n</code> different symbols</li>
+<li>the length of the token <code>s</code></li>
+</ul>
+<p>That is it. Now the number of possible tokens is simply <code>n^s</code>. (see maths is not scary).
+Note that the number of possible tokens grows faster with an increasing <code>s</code> than with an increasing <code>n</code>.</p>
+<p>Now just because you have <code>n^s</code> possible tokens. Does of course not mean an attacker has to try them all. However if your tokens are truely random
+they will have to try on average half of them to find a match.</p>
+<h1 id="user-facing-tokens">User facing tokens</h1>
+<p>Assume you want to give somebody access to some piece of data. But you don&rsquo;t want to jump trough all the hassle of
+provisioning an account on your system etc. So you just have the system generate a unique token.</p>
+<p>Now as stated above. Longer tokens are better, however these tokens are send to the user so probably a 100 char token isn&rsquo;t to user friendly.</p>
+<p>`https://yourserver/s/gH8MWo9qB0auNmekYIfKVtnAjqcDE6L2ApyYcc2rtTpicbz654ZC70aYby8V46E1X4uaF8ayd9spX1UHwfpHWCCkk0dnd8t6HxAS``</p>
+<p>So lets assume a 15 character string. And because it is user facing lets also only use human readable characters (so no 0 and O etc). Which leaves
+52 distinct characters (lower case + upper case + digits - ambigious looking chars).</p>
+<p>Now lets do some maths: 52^15 = 54.960.434.128.018.667.122.720.768
+That is more than the estimated number of starts in the universe already.</p>
+<p>Or to put it differently. Assume your server handles all requests perfectly and in exactly 0.1 seconds. And there is an attacker that has
+1.000.000 machines that can all do 1.000.000 requests a second. Then it would still take 174.278 years to go over every possible token.</p>
+<h1 id="non-user-facing-tokens">Non user facing tokens</h1>
+<p>Now for the user facing tokens we had to take into account that they still need to look somewhat sane. But if you for example
+create a unique token that devices identify themselfs with at your service then this token never gets seen by users. So we can do way better.</p>
+<p>Now lets assume we can use all lower case, uppercase and digits. Which gives us 62 characters. Now lets assume a token length of 50. Would
+this be enough to make it statistically almost impossible to break it?</p>
+<p>Maths time again: 62^50: 416.470.721.148.177.771.532.676.369.918.117.947.181.737.776.340.608.755.765.950.803.371.888.848.050.241.916.448.538.624
+That number is so big that it is almost impossible to wrap your head around. Assume somebody harnessed the power to try 10^80 (number of atoms in
+the observable universe) attempts a second. It would still take them 132 year to try all tokens!</p>
+
+                    </div>
+                    
+                </section>
+            </div>
+            <div class="footer">
+    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+        <ul>
+            <li>Powered by <a class="hugo" href="https://gohugo.io/" target="_blank">hugo</a></li>
+        </ul>
+    </div>
+</div>
+<script src='https://rullzer.com/js/all.min.js'></script>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', '', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

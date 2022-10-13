@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Security on rullzers blog</title>
@@ -6,11 +6,17 @@
     <description>Recent content in Security on rullzers blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <copyright>(c) 2015 Roeland Jago Douma -  This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/)</copyright>
-    <lastBuildDate>Fri, 06 Sep 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://rullzer.com/tags/security/index.xml" rel="self" type="application/rss+xml" />
-    
+    <copyright>(c) 2022 Roeland Jago Douma -  This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/)</copyright>
+    <lastBuildDate>Thu, 13 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://rullzer.com/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Strict-transport-security analysis</title>
+      <link>https://rullzer.com/2022/10/13/strict-transport-security-analysis/</link>
+      <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/2022/10/13/strict-transport-security-analysis/</guid>
+      <description>I worked with the Strict Transport Security header when I was still at Nextcloud. However my interest was reignited this week after attending the Practical TLS and PKI training by Scott Helme. So I started digging into the crawler.ninja dataset to see what I could get out of it.
+What is the Strict Transport Security Header? But first things first. For details read the mdm docs. But in short it comes down to a header a webserver can set on sercure requests to tell the client to only connect securely to that host for a given time.</description>
+    </item>
     
     <item>
       <title>Certificate lifetime analysis</title>
@@ -30,7 +36,7 @@ Due to the discussion and controversy around SC I decided to dive into some data
       <guid>https://rullzer.com/2019/04/01/secure-and-easy-2fa-in-nextcloud/</guid>
       <description>At Nextcloud we are focused on security and usability. Often these two things conflict. In the last few months we have been working hard to make sure that two-factor authentication is easy to setup and easy to use for all users!
 Without much further delay. I&amp;rsquo;m proud to introduce the next step in two-factor authentication the It is really me - Provider.
- Note: the app is still under heavy development.</description>
+Note: the app is still under heavy development. Still we appreciate testing and feedback!</description>
     </item>
     
     <item>
@@ -40,8 +46,8 @@ Without much further delay. I&amp;rsquo;m proud to introduce the next step in tw
       
       <guid>https://rullzer.com/2018/10/19/two-factor-via-nextcloud-notifications/</guid>
       <description>I&amp;rsquo;m happy to announce a new two-factor provider for your Nextcloud: the Notifications Provider. This provider utilizes your existing logged in devices to grant new devices access to your Nextcloud.
- Note: the app is still under heavy development. Still we appreciate testing and feedback!
- The flow is simple. You enable the provider in your personal security settings. Then the next time you log in you can chose to authenticate using a device that is already logged in to your account.</description>
+Note: the app is still under heavy development. Still we appreciate testing and feedback!
+The flow is simple. You enable the provider in your personal security settings. Then the next time you log in you can chose to authenticate using a device that is already logged in to your account.</description>
     </item>
     
     <item>

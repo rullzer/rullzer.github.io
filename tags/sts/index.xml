@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>STS on rullzers blog</title>
+    <link>https://rullzer.com/tags/sts/</link>
+    <description>Recent content in STS on rullzers blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>(c) 2022 Roeland Jago Douma -  This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/)</copyright>
+    <lastBuildDate>Thu, 13 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://rullzer.com/tags/sts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Strict-transport-security analysis</title>
+      <link>https://rullzer.com/2022/10/13/strict-transport-security-analysis/</link>
+      <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/2022/10/13/strict-transport-security-analysis/</guid>
+      <description>I worked with the Strict Transport Security header when I was still at Nextcloud. However my interest was reignited this week after attending the Practical TLS and PKI training by Scott Helme. So I started digging into the crawler.ninja dataset to see what I could get out of it.
+What is the Strict Transport Security Header? But first things first. For details read the mdm docs. But in short it comes down to a header a webserver can set on sercure requests to tell the client to only connect securely to that host for a given time.</description>
+    </item>
+    
+  </channel>
+</rss>

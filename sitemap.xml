@@ -1,145 +1,92 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-  <url>
-    <loc>https://rullzer.com/tags/certificate-lifetime/</loc>
-    <lastmod>2019-09-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://rullzer.com/2019/09/06/certificate-lifetime-analysis/</loc>
-    <lastmod>2019-09-06T00:00:00+00:00</lastmod>
-  </url>
-  
   <url>
     <loc>https://rullzer.com/post/</loc>
-    <lastmod>2019-09-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2022-10-13T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://rullzer.com/</loc>
-    <lastmod>2019-09-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2022-10-13T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://rullzer.com/tags/security/</loc>
-    <lastmod>2019-09-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2022-10-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://rullzer.com/tags/sts/</loc>
+    <lastmod>2022-10-13T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://rullzer.com/tags/</loc>
+    <lastmod>2022-10-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://rullzer.com/tags/certificate-lifetime/</loc>
     <lastmod>2019-09-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://rullzer.com/2019/09/06/certificate-lifetime-analysis/</loc>
+    <lastmod>2019-09-06T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://rullzer.com/tags/nextcloud/</loc>
     <lastmod>2019-04-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://rullzer.com/2019/04/01/secure-and-easy-2fa-in-nextcloud/</loc>
     <lastmod>2019-04-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://rullzer.com/2018/10/19/two-factor-via-nextcloud-notifications/</loc>
     <lastmod>2018-10-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://rullzer.com/2018/10/18/towards-a-stricter-content-security-policy/</loc>
     <lastmod>2018-10-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://rullzer.com/tags/apppasswords/</loc>
     <lastmod>2018-09-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://rullzer.com/tags/encryption/</loc>
     <lastmod>2018-09-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://rullzer.com/2018/09/05/improved-apppasswords-in-nextcloud-14/</loc>
     <lastmod>2018-09-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://rullzer.com/tags/dropit/</loc>
     <lastmod>2018-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://rullzer.com/2018/01/16/introducing-dropit/</loc>
     <lastmod>2018-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://rullzer.com/tags/appimage/</loc>
     <lastmod>2017-05-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://rullzer.com/tags/desktop-client/</loc>
     <lastmod>2017-05-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://rullzer.com/2017/05/29/nextcloud-desktop-client-appimage/</loc>
     <lastmod>2017-05-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://rullzer.com/2016/12/12/nextcloud-11-preview-improvements/</loc>
     <lastmod>2016-12-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://rullzer.com/tags/previews/</loc>
     <lastmod>2016-12-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://rullzer.com/2016/09/13/nextcloud-supported-php-versions/</loc>
     <lastmod>2016-09-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://rullzer.com/tags/php/</loc>
     <lastmod>2016-09-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://rullzer.com/tags/appframework/</loc>
     <lastmod>2016-09-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://rullzer.com/tags/ocs/</loc>
     <lastmod>2016-09-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://rullzer.com/2016/09/05/ocs-supported-by-the-appframework/</loc>
     <lastmod>2016-09-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://rullzer.com/tags/data-management/</loc>
     <lastmod>2015-09-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://rullzer.com/tags/owncloud/</loc>
     <lastmod>2015-09-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://rullzer.com/2015/09/03/owncloud-is-not-a-backup/</loc>
     <lastmod>2015-09-03T00:00:00+00:00</lastmod>
   </url>
-  
 </urlset>

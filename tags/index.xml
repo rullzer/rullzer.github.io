@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on rullzers blog</title>
@@ -6,11 +6,25 @@
     <description>Recent content in Tags on rullzers blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <copyright>(c) 2015 Roeland Jago Douma -  This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/)</copyright>
-    <lastBuildDate>Fri, 06 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <copyright>(c) 2022 Roeland Jago Douma -  This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/)</copyright>
+    <lastBuildDate>Thu, 13 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://rullzer.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Security</title>
+      <link>https://rullzer.com/tags/security/</link>
+      <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/tags/security/</guid>
+      <description></description>
+    </item>
     
-	<atom:link href="https://rullzer.com/tags/index.xml" rel="self" type="application/rss+xml" />
-    
+    <item>
+      <title>STS</title>
+      <link>https://rullzer.com/tags/sts/</link>
+      <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://rullzer.com/tags/sts/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Certificate lifetime</title>
@@ -18,15 +32,6 @@
       <pubDate>Fri, 06 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://rullzer.com/tags/certificate-lifetime/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Security</title>
-      <link>https://rullzer.com/tags/security/</link>
-      <pubDate>Fri, 06 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://rullzer.com/tags/security/</guid>
       <description></description>
     </item>
     

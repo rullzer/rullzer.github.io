@@ -7,7 +7,7 @@
 
     <meta name="description" content="">
 
-    <meta name="generator" content="Hugo 0.57.2" />
+    <meta name="generator" content="Hugo 0.104.3" />
     <meta name="twitter:card" content="summary">
     
     <meta name="twitter:title" content="Secure and Easy 2FA in Nextcloud &middot; rullzers blog">
@@ -87,33 +87,26 @@
 things conflict. In the last few months we have been working hard to
 make sure that two-factor authentication is easy to setup and easy to use
 for all users!</p>
-
 <p>Without much further delay. I&rsquo;m proud to introduce the next step in two-factor
 authentication the <em>It is really me - Provider</em>.</p>
-
 <blockquote>
 <p>Note: the app is still under heavy development. Still we appreciate testing
 and feedback!</p>
 </blockquote>
-
 <p>This provider as a second factor
 just presents the user with a button with the explicit instructions when to press it.
 Now a legitimate user can safely press the button and an evil hacker will
 most likely follow the clear instuctions and try to find another attack point.</p>
-
 <p>Writing a two-factor provider in Nextcloud is extremely simple. And I urge all developers
 to have a look at the code to see how easy it is.</p>
-
 <p>The heart of the app is the Provider Class that implements
 <code>OCP\Authentication\TwoFactorAuth\IProvider</code>.
 This intreface guides you with just a few
 methods to contructs your provider. On top of that we also chose to in this case
 implement the
 <code>OCP\Authentication\TwoFactorAuth\IProvidesPersonalSettings</code>.</p>
-
 <p>If we have a quick look at the actual functions you can see there is not much magic:</p>
-
-<pre><code class="language-php">	/**
+<pre tabindex="0"><code>	/**
 	 * Get unique identifier of this 2FA provider
 	 *
 	 * @return string
@@ -128,7 +121,7 @@ implement the
 	 * @return string
 	 */
 	public function getDisplayName(): string {
-		return $this-&gt;l10n-&gt;t('It is really me');
+		return $this-&gt;l10n-&gt;t(&#39;It is really me&#39;);
 	}
 
 	/**
@@ -137,7 +130,7 @@ implement the
 	 * @return string
 	 */
 	public function getDescription(): string {
-		return $this-&gt;l10n-&gt;t('Easy and secure validation of user');
+		return $this-&gt;l10n-&gt;t(&#39;Easy and secure validation of user&#39;);
 	}
 
 	/**
@@ -147,8 +140,8 @@ implement the
 	 * @return Template
 	 */
 	public function getTemplate(IUser $user): Template {
-		$tmpl = new Template(Application::APP_ID, 'challenge');
-		$tmpl-&gt;assign('user', $user-&gt;getDisplayName());
+		$tmpl = new Template(Application::APP_ID, &#39;challenge&#39;);
+		$tmpl-&gt;assign(&#39;user&#39;, $user-&gt;getDisplayName());
 		return $tmpl;
 	}
 
@@ -170,7 +163,7 @@ implement the
          * @return bool
          */
 	public function isTwoFactorAuthEnabledForUser(IUser $user): bool {
-		return $this-&gt;config-&gt;getAppValue(Application::APP_ID, $user-&gt;getUID() . '_enabled', '0') === '1';
+		return $this-&gt;config-&gt;getAppValue(Application::APP_ID, $user-&gt;getUID() . &#39;_enabled&#39;, &#39;0&#39;) === &#39;1&#39;;
 	}
 
 	/**
@@ -181,19 +174,14 @@ implement the
          */
 	public function getPersonalSettings(IUser $user): IPersonalProviderSettings {
 		return new Personal(
-			$this-&gt;config-&gt;getAppValue(Application::APP_ID, $user-&gt;getUID() . '_enabled', '0') === '1',
+			$this-&gt;config-&gt;getAppValue(Application::APP_ID, $user-&gt;getUID() . &#39;_enabled&#39;, &#39;0&#39;) === &#39;1&#39;,
 			$this-&gt;initialStateService
 		);
 	}
-</code></pre>
-
-<p>All the other logic in the app is just more helper functions. Some php classes to allow enabling the
+</code></pre><p>All the other logic in the app is just more helper functions. Some php classes to allow enabling the
 providers. Some javascript to make the frontend work nicely etc.</p>
-
 <p>Of course now you want to see how it looks:</p>
-
-<p><img src="/static/images/posts/2FA-ItIsReallyMe/login.png" alt="" class="pure-img" ></p>
-
+<!-- raw HTML omitted -->
 <p>Testing is much appreciated, as well as feedback, suggestions or pull requests. Please all leave them at <a href="https://github.com/rullzer/twofactor_itisreallyme">github</a>.</p>
 
                     </div>

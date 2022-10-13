@@ -7,7 +7,7 @@
 
     <meta name="description" content="">
 
-    <meta name="generator" content="Hugo 0.57.2" />
+    <meta name="generator" content="Hugo 0.104.3" />
     <meta name="twitter:card" content="summary">
     
     <meta name="twitter:title" content="Security headers in Nextcloud 17 &middot; rullzers blog">
@@ -39,6 +39,12 @@
 
         <nav class="nav">
             <ul class="nav-list">
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://twitter.com/roelandjago">
+                        <i class="fa fa-twitter"></i> Twitter
+                    </a>
+                </li>
                 
                 
                 <li class="nav-item">
@@ -77,24 +83,17 @@
                     </header>
                     
                     <div class="post-description">
-                        
-
-<p>The third beta on Nextcloud 17 has just been released and that is as good a time
+                        <p>The third beta on Nextcloud 17 has just been released and that is as good a time
 as any to update you on the Nextcloud security header changes that are coming to
 you in Nextcloud 17.</p>
-
 <h1 id="content-security-policy">Content Security Policy</h1>
-
 <p>The form-action directive has been added to the CSP. By default this will only
 allow forms to post to &lsquo;self&rsquo;. This means that all form submissions by default
 have to be submited to the origin.</p>
-
 <p>&lsquo;unsafe-eval&rsquo; has been disabled by default for some time now. But please do
 note that the ability for apps to overwrite this will disappear in a future
 version of Nextcloud. So if you have not already, fix your code!</p>
-
 <h1 id="feature-policy">Feature Policy</h1>
-
 <p>With Nextcloud 17 a new shiny security header is shipper. The feature policy
 header tells your browser what features it can use.</p>
 

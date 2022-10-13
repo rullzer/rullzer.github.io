@@ -7,7 +7,7 @@
 
     <meta name="description" content="">
 
-    <meta name="generator" content="Hugo 0.57.2" />
+    <meta name="generator" content="Hugo 0.104.3" />
     <meta name="twitter:card" content="summary">
     
     <meta name="twitter:title" content="Security &middot; rullzers blog">
@@ -71,6 +71,66 @@
             
             <div class="posts">
                 
+                <h1 class="content-subhead">13 Oct 2022, 00:00</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://rullzer.com/2022/10/13/strict-transport-security-analysis/" class="post-title">Strict-transport-security analysis</a>
+
+                        <p class="post-meta">
+                            
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        <p>I worked with the Strict Transport Security header when I was still at <a href="https://nextcloud.com">Nextcloud</a>. However my interest was reignited this week after
+attending the <a href="https://www.feistyduck.com/training/practical-tls-and-pki">Practical TLS and PKI</a> training by <a href="https://scotthelme.co.uk/">Scott Helme</a>. So I started
+digging into the <a href="https://crawler.ninja/">crawler.ninja</a> dataset to see what I could get out of it.</p>
+<h1 id="what-is-the-strict-transport-security-header">What is the Strict Transport Security Header?</h1>
+<p>But first things first. For details read the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security">mdm docs</a>. But in short it comes
+down to a header a webserver can set on sercure requests to tell the client to only connect securely to that host for a given time. Lets jump right into an example:</p>
+<p><code>Strict-Transport-Security: max-age=63072000; includeSubDomains; preload</code></p>
+<p>This header will tell the client to connect only securely to this domain (and all its subdomains) for the next 63072000 seconds. So even if you would manually
+navigate to http://DOMAIN.TLD the client would just rewrit this directly to https://DOMAIN.TLD</p>
+<p>Pretty neat!</p>
+<h1 id="preloading">Preloading</h1>
+<p>The header is pretty neat and will make sure in the future you connect only securely to your favorite websites. However, there is a tiny edge case. The first time
+you access a website your request (can) still go over the big bad unsecured web. To solve this there is preloading. Anybody that meets the criteria can head over to
+<a href="https://hstspreload.org/">hstspreload.org</a> and submit their domain. If your request meets the criteria it will then be added to the big preload list that for example
+chrome and firefox use. As the name suggest this list is preloaded so if you have never been to https://DOMAIN.TLD but DOMAIN.TLD is in the preload list. Your browser will
+still always connect securely.</p>
+<h1 id="the-actual-analysis">The actual analysis</h1>
+<p>Now that we have the theory behind us. I wanted to see how the top 1 Million sites were doing. So I fired up a database imported the <a href="https://crawler.ninja">crawler.ninja</a> dataset
+of October 11th, grabbed the chrome and firefox preload lists and wrote some code.</p>
+<p>The first thing I checked was how many of the top 1 million hosts are actually being preloaded. For both browsers this was less than 1% (8496 for Chrome and 8297 for Firefox).
+I don&rsquo;t know what I was expecting but for sure I was expecting more than this. Especially given that there are 178212 domains preloaded in Chrome and 138393 domains preloaded in Firefox.
+Which then also means that the fast majority of preloaded sites are not less often visited.</p>
+<p>But it gets better. Of the 1M sites there are 26406 sites with a header that meets the preloading criteria. Now I understand it takes a bit of time to have your submission propagate. However similar numbers are observed in the dump from early June. If all those website would just go fill out the form we could tripple the number of preloaded sites of the most visited websites in the world in just a few weeks time.</p>
+<h1 id="understanding-the-header">Understanding the header</h1>
+<p>Of all the sites in the dataset a total of 202781 have the header set in some shape or form. This is quite significant. Over 20% of the 1 million most visited sites on the web use this header. But that kind of raises more questions than it answers for me.</p>
+<p>Upon further parsing the header the most often seen value for the <code>max-age</code> directive is to to 31536000 (365 days). Followed by half a year, 2 years etc. But then we see that there are also 7659
+headers that set the max-age to 0. In total there are a little over 11 thousand (excluding 0) entries that have a max-age less of 1 hour or less.
+For sure such times are only used when debugging and making sure it all work.
+But we can take this a step further.
+A little over 20 thousand (excluding 0) entries have a max-age of 30 days or less. Meaning that they must have some kind of faith in their ability to keep their site securely accessible.</p>
+<p>Of course there is also the other side of the spectrum. 1 site is being future proof by having a max-age of 1.576.800.031.536.000.</p>
+<p>All in all this is not giving me a whole lot of confidence everybody knows what they are doing with this header.</p>
+<h1 id="is-tis-a-problem">Is tis a problem?</h1>
+<p>One could argue this is not that much of a problem anymore. Chrome and Firefox are switching over to a HTTPS first approach. So preloading might become obsolete anyway. However we are not fully there yet. On top of that having a long list of sites your browser just knows never ever to connect to over an unsecure connection is still something I can only see as a good thing).</p>
+<h1 id="the-way-forward">The way forward?</h1>
+<p>So where do we go from here?:</p>
+<ul>
+<li>Ideally we start with getting all those sites that are ready for preloading into the overall preloaded list. But it is of course up to the owner of the domain to submit themselves.</li>
+<li>I would also argue that with the amount of crawlers out there we could find some way to speed up this preload process. Maybe if a host is seen multiple times in a momth with the requirements for preloading they could automatically be added?</li>
+</ul>
+<h1 id="acknowledgements">Acknowledgements</h1>
+<p>This is now the second time I use the <a href="https://crawler.ninja">crawler.ninja</a> data for analysis, so again a huge thanks to Scott for running that. Also thanks to Scott for
+acting as rubber duck when I was thinking trough all this and asking some valid questions on where to dig deeper.</p>
+
+                    </div>
+                </section>
+                
                 <h1 class="content-subhead">06 Sep 2019, 00:00</h1>
                 <section class="post">
                     <header class="post-header">
@@ -84,56 +144,30 @@
                     </header>
 
                     <div class="post-description">
-                        
-
-<p>Currently a vote is ongoing in the Server Certificate Working Group. The vote is with regards to the <a href="https://cabforum.org/pipermail/servercert-wg/2019-August/000894.html">SC22 ballot</a> that would limit certificate lifetime to a maximum of 1 year.</p>
-
+                        <p>Currently a vote is ongoing in the Server Certificate Working Group. The vote is with regards to the <a href="https://cabforum.org/pipermail/servercert-wg/2019-August/000894.html">SC22 ballot</a> that would limit certificate lifetime to a maximum of 1 year.</p>
 <p>Due to the discussion and controversy around SC I decided to dive into some data to see what the actual lifetime of certificates is in practice. Now any selection will be biased to some degree. However taking the Alexa top 1 million crawls seems like a fair selection and should provide insights into the biggest websites out there.</p>
-
 <p>The data source used can be found at: <a href="https://scans.io/data/scotthelme/alexaTop1Million/11-08-2019.zip">https://scans.io/data/scotthelme/alexaTop1Million/11-08-2019.zip</a></p>
-
 <p>Still not all websites use encrypted communication (shame on them!) but of those 1 million in the dump 471665 do. Filtering out obvious bad/invalid certificates (CA certificates, lifetime of more than 825 days) and we are left with 411241 certificates to analyze.</p>
-
 <p>For full transparency I am in favor of SC22 passing. But I am just curious of the current state of affairs in regards to the ballot.</p>
-
 <h1 id="methodology">Methodology</h1>
-
 <p>The data is imported into a local database. And after which all the sites are analyzed. Since we only care about websites with certificates all the other ones are discarded. Of the websites with certificates present only the first certificate in the chain in analyzed.</p>
-
 <h1 id="certificate-lifetimes">Certificate lifetimes</h1>
-
 <p>As a first step all the certificates were analyzed with their start and expiration date. This gives the most interesting metrics already. The first thing that pops out is the wide range. The minimum certificate lifetime found is 7 days and the largest is 825 days (the maximum allowed).</p>
-
-<p>After some more number crunching this gives an average lifetime of ~261.6 days. With a standard deviation of 197.9 days. Clearly the spread is quite large when we consider certificate lifetimes. But the good news is that the &laquo;average&raquo; certificate would not have to be changed with regards to SC22.</p>
-
+<p>After some more number crunching this gives an average lifetime of ~261.6 days. With a standard deviation of 197.9 days. Clearly the spread is quite large when we consider certificate lifetimes. But the good news is that the &ldquo;average&rdquo; certificate would not have to be changed with regards to SC22.</p>
 <p>Besides the average the mean is also an interesting metric. The center value at 50%. This is 190 days. Again a good sign that a majority of certificates is already doing what SC22 proposes.</p>
-
 <h2 id="how-many-certificates-are-we-talking-about">How many certificates are we talking about?</h2>
-
 <p>This leads to the next question in the analysis. What percentage of certificates is valid for X days or less. Calculating this yields some interesting results. It turns out the number of certificates with really short lifetimes is small. But we see a huge jump at 90 days. 45.6% of all certificates has a lifetime of 90 days or less. Of course we know this lifetime all to well from Let’s Encrypt. And further analysis shows that this is indeed where the vast majority of those 90 days certificates comes from. That means that a lot of website are already using automation!</p>
-
 <p>The next significant jump comes at 190 days. 54.6% off all certificates have a lifetime of less than that.</p>
-
 <p>Followed by jumps at 356 (71.4%) and 366 (76.0%). Then there is a short climb. But already after 395 days we are at more than 80% of certificates. More than 90% comes after 732 days (~2 years). And more than 99% of certificates is covered after at 814 days.</p>
-
 <h1 id="what-does-this-data-tell-us">What does this data tell us?</h1>
-
 <p>Now that we have all the data I&rsquo;m going to make some assumptions to simplify things. I feel the 395 day lifetime of certificates is not far enough away from 365 days to warrant a special status. If you can renew your certificate every 395 days you can also do it once a year. My bet is the ~400 days are people that renewed their old certificate before the year was over and the provider of the certificate added the remaining days to their new certificate.</p>
-
 <p>With the assumption above in consideration we can see that already more than 80% would fit within what is proposed in SC22. As the vast majority of certificates is already renewed once a year.</p>
-
 <p>It also tells us that about 10% of the certificates have to be renewed somewhere in the range of 1 to 2 years. Which mean for at least part of those certificates the change to switch to certificates with a lifetime of at most a year is rather minimal.</p>
-
 <h1 id="conclusions">Conclusions</h1>
-
 <p>This short analysis shows us that from the Alexa Top 1 Million the websites using a certificate at least 80% would not be affected by the SC22 ballot. This is of course already great news on its own.</p>
-
 <p>Of course the remaining 20% is not insignificant. However I feel it is worth to point out that often discounts are provided for multi-year certificates. Which could be an incentive at the moment to buy them. But there can be many other reasons those 20% chose for longer certificates.</p>
-
 <p>I hope this short analysis provided you with some insights. And I&rsquo;m curious to hear what your thoughts are!</p>
-
 <h2 id="acknowledgements">Acknowledgements</h2>
-
 <p>As the observant reader can already see the scan data was provided by <a href="https://scotthelme.co.uk/">Scott Helme</a>, to be exact from <a href="https://crawler.ninja/">crawler.ninja</a>. Also thanks to Scott for going over my initial analysis and proposing some improvements.</p>
 
                     </div>
@@ -156,33 +190,26 @@
 things conflict. In the last few months we have been working hard to
 make sure that two-factor authentication is easy to setup and easy to use
 for all users!</p>
-
 <p>Without much further delay. I&rsquo;m proud to introduce the next step in two-factor
 authentication the <em>It is really me - Provider</em>.</p>
-
 <blockquote>
 <p>Note: the app is still under heavy development. Still we appreciate testing
 and feedback!</p>
 </blockquote>
-
 <p>This provider as a second factor
 just presents the user with a button with the explicit instructions when to press it.
 Now a legitimate user can safely press the button and an evil hacker will
 most likely follow the clear instuctions and try to find another attack point.</p>
-
 <p>Writing a two-factor provider in Nextcloud is extremely simple. And I urge all developers
 to have a look at the code to see how easy it is.</p>
-
 <p>The heart of the app is the Provider Class that implements
 <code>OCP\Authentication\TwoFactorAuth\IProvider</code>.
 This intreface guides you with just a few
 methods to contructs your provider. On top of that we also chose to in this case
 implement the
 <code>OCP\Authentication\TwoFactorAuth\IProvidesPersonalSettings</code>.</p>
-
 <p>If we have a quick look at the actual functions you can see there is not much magic:</p>
-
-<pre><code class="language-php">	/**
+<pre tabindex="0"><code>	/**
 	 * Get unique identifier of this 2FA provider
 	 *
 	 * @return string
@@ -197,7 +224,7 @@ implement the
 	 * @return string
 	 */
 	public function getDisplayName(): string {
-		return $this-&gt;l10n-&gt;t('It is really me');
+		return $this-&gt;l10n-&gt;t(&#39;It is really me&#39;);
 	}
 
 	/**
@@ -206,7 +233,7 @@ implement the
 	 * @return string
 	 */
 	public function getDescription(): string {
-		return $this-&gt;l10n-&gt;t('Easy and secure validation of user');
+		return $this-&gt;l10n-&gt;t(&#39;Easy and secure validation of user&#39;);
 	}
 
 	/**
@@ -216,8 +243,8 @@ implement the
 	 * @return Template
 	 */
 	public function getTemplate(IUser $user): Template {
-		$tmpl = new Template(Application::APP_ID, 'challenge');
-		$tmpl-&gt;assign('user', $user-&gt;getDisplayName());
+		$tmpl = new Template(Application::APP_ID, &#39;challenge&#39;);
+		$tmpl-&gt;assign(&#39;user&#39;, $user-&gt;getDisplayName());
 		return $tmpl;
 	}
 
@@ -239,7 +266,7 @@ implement the
          * @return bool
          */
 	public function isTwoFactorAuthEnabledForUser(IUser $user): bool {
-		return $this-&gt;config-&gt;getAppValue(Application::APP_ID, $user-&gt;getUID() . '_enabled', '0') === '1';
+		return $this-&gt;config-&gt;getAppValue(Application::APP_ID, $user-&gt;getUID() . &#39;_enabled&#39;, &#39;0&#39;) === &#39;1&#39;;
 	}
 
 	/**
@@ -250,19 +277,14 @@ implement the
          */
 	public function getPersonalSettings(IUser $user): IPersonalProviderSettings {
 		return new Personal(
-			$this-&gt;config-&gt;getAppValue(Application::APP_ID, $user-&gt;getUID() . '_enabled', '0') === '1',
+			$this-&gt;config-&gt;getAppValue(Application::APP_ID, $user-&gt;getUID() . &#39;_enabled&#39;, &#39;0&#39;) === &#39;1&#39;,
 			$this-&gt;initialStateService
 		);
 	}
-</code></pre>
-
-<p>All the other logic in the app is just more helper functions. Some php classes to allow enabling the
+</code></pre><p>All the other logic in the app is just more helper functions. Some php classes to allow enabling the
 providers. Some javascript to make the frontend work nicely etc.</p>
-
 <p>Of course now you want to see how it looks:</p>
-
-<p><img src="/static/images/posts/2FA-ItIsReallyMe/login.png" alt="" class="pure-img" ></p>
-
+<!-- raw HTML omitted -->
 <p>Testing is much appreciated, as well as feedback, suggestions or pull requests. Please all leave them at <a href="https://github.com/rullzer/twofactor_itisreallyme">github</a>.</p>
 
                     </div>
@@ -284,26 +306,19 @@ providers. Some javascript to make the frontend work nicely etc.</p>
                         <p>I&rsquo;m happy to announce a new two-factor provider for your Nextcloud: the
 <em>Notifications Provider</em>. This provider utilizes your existing logged in
 devices to grant new devices access to your Nextcloud.</p>
-
 <blockquote>
 <p>Note: the app is still under heavy development. Still we appreciate testing
 and feedback!</p>
 </blockquote>
-
 <p>The flow is simple. You enable the provider in your personal security settings.
 Then the next time you log in you can chose to authenticate using a device that
 is already logged in to your account.</p>
-
-<p><img src="/static/images/posts/2FA-Notifications/login.png" alt="" class="pure-img" ></p>
-
+<!-- raw HTML omitted -->
 <p>Now a notification is dispatched. This is delivered to all your devices, which
 means that you even get push notifications! That might just look something like:</p>
-
-<p><img src="/static/images/posts/2FA-Notifications/android_push.png" alt="" class="pure-img" ></p>
-
+<!-- raw HTML omitted -->
 <p>You can approve or cancel the login from any of your devices. If you approved
 the login then you will be automatically logged in.</p>
-
 <p>You can grab the app from the <a href="https://apps.nextcloud.com/apps/twofactor_nextcloud_notification">app store</a>. And
 your feedback, suggestions or pull requests are welcome on <a href="https://github.com/nickv-nextcloud/twofactor_nextcloud_notification">github</a>.</p>
 
@@ -323,26 +338,15 @@ your feedback, suggestions or pull requests are welcome on <a href="https://gith
                     </header>
 
                     <div class="post-description">
-                        
-
-<p>A Content Security Policy (<em>CSP</em>) can be used to protect against Cross Site Scripting (<em>XSS</em>) attacks. This is done by having the server tell the browser what resources (executable script, images, etc) can be loaded from where. All this is told to the browser via a header, so if the actual page tries to do something it is not allowed the browser will block it.</p>
-
+                        <p>A Content Security Policy (<em>CSP</em>) can be used to protect against Cross Site Scripting (<em>XSS</em>) attacks. This is done by having the server tell the browser what resources (executable script, images, etc) can be loaded from where. All this is told to the browser via a header, so if the actual page tries to do something it is not allowed the browser will block it.</p>
 <p>At Nextcloud we have deployed a <em>CSP</em> for a while now that limited the resources to be loaded mainly to the domain your Nextcloud is running on. So by default it is not possible to load a random script from somewhere on the web.</p>
-
 <p>We also added a nonce so that only javascript with the proper nonce set would even get execute by (modern) browsers.</p>
-
 <p>Now because of the way a lot of our javascript code and a lot of 3rdparty javascript code was written we did allow <strong>unsafe-eval</strong>. Which allowed the execution of <strong>eval</strong>. This function is probably best known for being a well known <em>XSS</em> attack vector.</p>
-
 <h1 id="dropping-unsafe-eval">Dropping unsafe-eval</h1>
-
 <p>Of course I would not be writing this if we did not change anything about this behavior. Which brings me to Nextcloud 15 where we will disallow <strong>unsafe-eval</strong> by default in our <em>CSP</em>. This means that your Nextcloud will, by default, not permit execution of <strong>eval</strong>. Which results in a safer Nextcloud.</p>
-
 <h2 id="information-for-developers">Information for developers</h2>
-
 <p>We have tried to make the transition to a stricter <em>CSP</em> as smooth as possible. However it could be that if you have written a Nextcloud app that you need to take action.</p>
-
 <p>We are actively checking applications if they still work as expected and submitting pull requests. But of course help is appreciated. The easiest way to verify is to download the latest <a href="https://download.nextcloud.com/server/daily/latest-master.zip">Nextcloud daily</a> and try out your app. Be sure to have your developer tools open and keep an eye on the console. If the <em>CSP</em> is violated a message will be shown there.</p>
-
 <p>If you need help feel free to mention me (<em>@rullzer</em>) on github or drop by in <a href="https://webchat.freenode.net/">#nextcloud-dev on Freenode</a>.</p>
 
                     </div>

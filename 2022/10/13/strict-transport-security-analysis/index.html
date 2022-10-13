@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strict-transport-security analysis &middot; rullzers blog</title>
+
+    <meta name="description" content="">
+
+    <meta name="generator" content="Hugo 0.104.3" />
+    <meta name="twitter:card" content="summary">
+    
+    <meta name="twitter:title" content="Strict-transport-security analysis &middot; rullzers blog">
+    <meta name="twitter:description" content="">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Strict-transport-security analysis &middot; rullzers blog">
+    <meta property="og:description" content="">
+
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+
+    <link rel="stylesheet" href='https://rullzer.com/css/all.min.css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="alternate" type="application/rss+xml" title="rullzers blog" href='https://rullzer.com/index.xml' />
+</head>
+<body>
+
+
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="https://rullzer.com/">rullzers blog</a></h1>
+            <h2 class="brand-tagline"></h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://twitter.com/roelandjago">
+                        <i class="fa fa-twitter"></i> Twitter
+                    </a>
+                </li>
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://github.com/rullzer">
+                        <i class="fa fa-github-alt"></i> Github
+                    </a>
+                </li>
+                
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href='https://rullzer.com/index.xml'>
+                        <i class="fa fa-rss"></i> rss
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">13 Oct 2022, 00:00</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://rullzer.com/2022/10/13/strict-transport-security-analysis/" class="post-title">Strict-transport-security analysis</a>
+
+                        <p class="post-meta">
+                            
+                            
+                        </p>
+                    </header>
+                    
+                    <div class="post-description">
+                        <p>I worked with the Strict Transport Security header when I was still at <a href="https://nextcloud.com">Nextcloud</a>. However my interest was reignited this week after
+attending the <a href="https://www.feistyduck.com/training/practical-tls-and-pki">Practical TLS and PKI</a> training by <a href="https://scotthelme.co.uk/">Scott Helme</a>. So I started
+digging into the <a href="https://crawler.ninja/">crawler.ninja</a> dataset to see what I could get out of it.</p>
+<h1 id="what-is-the-strict-transport-security-header">What is the Strict Transport Security Header?</h1>
+<p>But first things first. For details read the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security">mdm docs</a>. But in short it comes
+down to a header a webserver can set on sercure requests to tell the client to only connect securely to that host for a given time. Lets jump right into an example:</p>
+<p><code>Strict-Transport-Security: max-age=63072000; includeSubDomains; preload</code></p>
+<p>This header will tell the client to connect only securely to this domain (and all its subdomains) for the next 63072000 seconds. So even if you would manually
+navigate to http://DOMAIN.TLD the client would just rewrit this directly to https://DOMAIN.TLD</p>
+<p>Pretty neat!</p>
+<h1 id="preloading">Preloading</h1>
+<p>The header is pretty neat and will make sure in the future you connect only securely to your favorite websites. However, there is a tiny edge case. The first time
+you access a website your request (can) still go over the big bad unsecured web. To solve this there is preloading. Anybody that meets the criteria can head over to
+<a href="https://hstspreload.org/">hstspreload.org</a> and submit their domain. If your request meets the criteria it will then be added to the big preload list that for example
+chrome and firefox use. As the name suggest this list is preloaded so if you have never been to https://DOMAIN.TLD but DOMAIN.TLD is in the preload list. Your browser will
+still always connect securely.</p>
+<h1 id="the-actual-analysis">The actual analysis</h1>
+<p>Now that we have the theory behind us. I wanted to see how the top 1 Million sites were doing. So I fired up a database imported the <a href="https://crawler.ninja">crawler.ninja</a> dataset
+of October 11th, grabbed the chrome and firefox preload lists and wrote some code.</p>
+<p>The first thing I checked was how many of the top 1 million hosts are actually being preloaded. For both browsers this was less than 1% (8496 for Chrome and 8297 for Firefox).
+I don&rsquo;t know what I was expecting but for sure I was expecting more than this. Especially given that there are 178212 domains preloaded in Chrome and 138393 domains preloaded in Firefox.
+Which then also means that the fast majority of preloaded sites are not less often visited.</p>
+<p>But it gets better. Of the 1M sites there are 26406 sites with a header that meets the preloading criteria. Now I understand it takes a bit of time to have your submission propagate. However similar numbers are observed in the dump from early June. If all those website would just go fill out the form we could tripple the number of preloaded sites of the most visited websites in the world in just a few weeks time.</p>
+<h1 id="understanding-the-header">Understanding the header</h1>
+<p>Of all the sites in the dataset a total of 202781 have the header set in some shape or form. This is quite significant. Over 20% of the 1 million most visited sites on the web use this header. But that kind of raises more questions than it answers for me.</p>
+<p>Upon further parsing the header the most often seen value for the <code>max-age</code> directive is to to 31536000 (365 days). Followed by half a year, 2 years etc. But then we see that there are also 7659
+headers that set the max-age to 0. In total there are a little over 11 thousand (excluding 0) entries that have a max-age less of 1 hour or less.
+For sure such times are only used when debugging and making sure it all work.
+But we can take this a step further.
+A little over 20 thousand (excluding 0) entries have a max-age of 30 days or less. Meaning that they must have some kind of faith in their ability to keep their site securely accessible.</p>
+<p>Of course there is also the other side of the spectrum. 1 site is being future proof by having a max-age of 1.576.800.031.536.000.</p>
+<p>All in all this is not giving me a whole lot of confidence everybody knows what they are doing with this header.</p>
+<h1 id="is-tis-a-problem">Is tis a problem?</h1>
+<p>One could argue this is not that much of a problem anymore. Chrome and Firefox are switching over to a HTTPS first approach. So preloading might become obsolete anyway. However we are not fully there yet. On top of that having a long list of sites your browser just knows never ever to connect to over an unsecure connection is still something I can only see as a good thing).</p>
+<h1 id="the-way-forward">The way forward?</h1>
+<p>So where do we go from here?:</p>
+<ul>
+<li>Ideally we start with getting all those sites that are ready for preloading into the overall preloaded list. But it is of course up to the owner of the domain to submit themselves.</li>
+<li>I would also argue that with the amount of crawlers out there we could find some way to speed up this preload process. Maybe if a host is seen multiple times in a momth with the requirements for preloading they could automatically be added?</li>
+</ul>
+<h1 id="acknowledgements">Acknowledgements</h1>
+<p>This is now the second time I use the <a href="https://crawler.ninja">crawler.ninja</a> data for analysis, so again a huge thanks to Scott for running that. Also thanks to Scott for
+acting as rubber duck when I was thinking trough all this and asking some valid questions on where to dig deeper.</p>
+
+                    </div>
+                    
+                </section>
+            </div>
+            <div class="footer">
+    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+        <ul>
+            <li>Powered by <a class="hugo" href="https://gohugo.io/" target="_blank">hugo</a></li>
+        </ul>
+    </div>
+</div>
+<script src='https://rullzer.com/js/all.min.js'></script>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', '', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

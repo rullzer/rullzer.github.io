@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Encryption on rullzers blog</title>
@@ -6,12 +6,8 @@
     <description>Recent content in Encryption on rullzers blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <copyright>(c) 2015 Roeland Jago Douma -  This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/)</copyright>
-    <lastBuildDate>Wed, 05 Sep 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://rullzer.com/tags/encryption/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <copyright>(c) 2022 Roeland Jago Douma -  This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/)</copyright>
+    <lastBuildDate>Wed, 05 Sep 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://rullzer.com/tags/encryption/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Improved AppPasswords in Nextcloud 14</title>
       <link>https://rullzer.com/2018/09/05/improved-apppasswords-in-nextcloud-14/</link>

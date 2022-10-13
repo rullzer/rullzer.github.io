@@ -7,7 +7,7 @@
 
     <meta name="description" content="">
 
-    <meta name="generator" content="Hugo 0.57.2" />
+    <meta name="generator" content="Hugo 0.104.3" />
     <meta name="twitter:card" content="summary">
     
     <meta name="twitter:title" content="Encryption &middot; rullzers blog">
@@ -84,62 +84,47 @@
                     </header>
 
                     <div class="post-description">
-                        
-
-<p>The <em>app passwords</em> have been available in Nextcloud for some time now. They were
+                        <p>The <em>app passwords</em> have been available in Nextcloud for some time now. They were
 first introduced when we added second factor authentication to Nextcloud, as
 you still want to have a way to connect your mobile and desktop clients to
 your account. In the early days this was all manual labor.</p>
-
 <p>In the last year we have added support for <em>app passwords</em> to our mobile clients
 and the desktop client is following soon. This means that you authenticate
 when you setup your account using a normal login (with second factor
 authentication if required). A long random (72 character) <em>app password</em> is
 generated for you.</p>
-
 <p><em>App passwords</em> have several advantages. For example your real password is never
 stored on your devices. Also you can revoke access to a specific device in
 your security settings of your Nextcloud, blocking your lost phone from
 accessing your data. All pretty sweet.</p>
-
 <h2 id="apppasswords-original-design">AppPasswords original design</h2>
-
 <p>Now on to explaining how <em>app passwords</em> used to work.</p>
-
 <p>Nextcloud never stores your password in plain text. And this means we
 also never store your <em>app password</em> in plain text. Roughly what we stored are
 three things:</p>
-
 <ol>
 <li>your username</li>
 <li>a hash of your <em>app password</em></li>
 <li>your password symmetrically encrypted with the <em>app password</em></li>
 </ol>
-
 <p>This means that if you authenticate with your <code>(userName, appPassword)</code> we do the
 following:</p>
-
 <ol>
 <li><code>appPasswordHash = hash(appPassword)</code></li>
 <li>Lookup <code>(userName, appPasswordHash)</code> in the table</li>
 <li><code>password = decrypt_symmetric(encryptedPassword, appPassword)</code></li>
 <li>validate your password against your user back-end</li>
 </ol>
-
 <h2 id="improvements">Improvements</h2>
-
 <p>The main draw back of our first implementation is that when a user changed their
 password this means that all their <em>app passwords</em> are invalid. This is caused by
 the password being encrypted by the <em>app password</em> and only the hash being stored in
 the database.</p>
-
 <p>So to overcome this issue we needed to find a solution to update the encrypted
 password without knowing the actual <em>app passwords</em>. The answer to this is public key
 cryptography.</p>
-
 <p>This means a few changes as a first step we generate a RSA key pair. then
 we store the following:</p>
-
 <ol>
 <li>your username</li>
 <li>a hash of your <em>app password</em></li>
@@ -147,9 +132,7 @@ we store the following:</p>
 <li>your public key</li>
 <li>your password encrypted with your public key</li>
 </ol>
-
 <p>Now the flow when your login with <code>(userName, appPassword)</code> changes slightly.</p>
-
 <ol>
 <li><code>appPasswordHash = hash(appPassword)</code></li>
 <li>Lookup <code>(userName, appPasswordHash)</code> in the table</li>
@@ -157,29 +140,22 @@ we store the following:</p>
 <li><code>password = decrypt(EncryptedPassword, privateKey)</code></li>
 <li>validate your password against your user back-end</li>
 </ol>
-
 <p>Now to update your password we simply fetch all the <em>app passwords</em> for a user. And
 for each <em>app password</em> encrypt the new password with their public key.</p>
-
 <blockquote>
 <p>Note: we don&rsquo;t actually get the <em>app passwords</em> form the database just the
 rows with hashed <em>app passwords</em>. However, for this step we don&rsquo;t rely on the
 actual <em>app password</em>.</p>
 </blockquote>
-
 <h3 id="migration">Migration</h3>
-
 <p>To make things as smooth as possible we made sure that migration to the new
 <em>app passwords</em> is transparent to the user. Your old <em>app passwords</em> will not be
 invalidated. Instead the first time you use them they will automatically be
 converted. So from a user perspective nothing changes.</p>
-
 <h2 id="future-work">Future work</h2>
-
 <p>We feel that this improvement brings <em>app passwords</em> to a new level. Not having
 to re-authenticate your devices when you change your password makes the user
 experience a lot better.</p>
-
 <p>Of course there is room for improvement. Currently the <em>app passwords</em> are only
 updated when you use our default user back-end. If you use for example LDAP then Nextcloud never gets told the new password. We are already working on improving
 this in Nextcloud 15! So stay tuned!</p>

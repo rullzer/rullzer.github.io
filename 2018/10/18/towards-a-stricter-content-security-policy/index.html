@@ -7,7 +7,7 @@
 
     <meta name="description" content="">
 
-    <meta name="generator" content="Hugo 0.57.2" />
+    <meta name="generator" content="Hugo 0.104.3" />
     <meta name="twitter:card" content="summary">
     
     <meta name="twitter:title" content="Towards a stricter Content Security Policy &middot; rullzers blog">
@@ -83,26 +83,15 @@
                     </header>
                     
                     <div class="post-description">
-                        
-
-<p>A Content Security Policy (<em>CSP</em>) can be used to protect against Cross Site Scripting (<em>XSS</em>) attacks. This is done by having the server tell the browser what resources (executable script, images, etc) can be loaded from where. All this is told to the browser via a header, so if the actual page tries to do something it is not allowed the browser will block it.</p>
-
+                        <p>A Content Security Policy (<em>CSP</em>) can be used to protect against Cross Site Scripting (<em>XSS</em>) attacks. This is done by having the server tell the browser what resources (executable script, images, etc) can be loaded from where. All this is told to the browser via a header, so if the actual page tries to do something it is not allowed the browser will block it.</p>
 <p>At Nextcloud we have deployed a <em>CSP</em> for a while now that limited the resources to be loaded mainly to the domain your Nextcloud is running on. So by default it is not possible to load a random script from somewhere on the web.</p>
-
 <p>We also added a nonce so that only javascript with the proper nonce set would even get execute by (modern) browsers.</p>
-
 <p>Now because of the way a lot of our javascript code and a lot of 3rdparty javascript code was written we did allow <strong>unsafe-eval</strong>. Which allowed the execution of <strong>eval</strong>. This function is probably best known for being a well known <em>XSS</em> attack vector.</p>
-
 <h1 id="dropping-unsafe-eval">Dropping unsafe-eval</h1>
-
 <p>Of course I would not be writing this if we did not change anything about this behavior. Which brings me to Nextcloud 15 where we will disallow <strong>unsafe-eval</strong> by default in our <em>CSP</em>. This means that your Nextcloud will, by default, not permit execution of <strong>eval</strong>. Which results in a safer Nextcloud.</p>
-
 <h2 id="information-for-developers">Information for developers</h2>
-
 <p>We have tried to make the transition to a stricter <em>CSP</em> as smooth as possible. However it could be that if you have written a Nextcloud app that you need to take action.</p>
-
 <p>We are actively checking applications if they still work as expected and submitting pull requests. But of course help is appreciated. The easiest way to verify is to download the latest <a href="https://download.nextcloud.com/server/daily/latest-master.zip">Nextcloud daily</a> and try out your app. Be sure to have your developer tools open and keep an eye on the console. If the <em>CSP</em> is violated a message will be shown there.</p>
-
 <p>If you need help feel free to mention me (<em>@rullzer</em>) on github or drop by in <a href="https://webchat.freenode.net/">#nextcloud-dev on Freenode</a>.</p>
 
                     </div>

@@ -7,7 +7,7 @@
 
     <meta name="description" content="">
 
-    <meta name="generator" content="Hugo 0.57.2" />
+    <meta name="generator" content="Hugo 0.104.3" />
     <meta name="twitter:card" content="summary">
     
     <meta name="twitter:title" content="Posts &middot; rullzers blog">
@@ -84,56 +84,30 @@
                     </header>
 
                     <div class="post-description">
-                        
-
-<p>Currently a vote is ongoing in the Server Certificate Working Group. The vote is with regards to the <a href="https://cabforum.org/pipermail/servercert-wg/2019-August/000894.html">SC22 ballot</a> that would limit certificate lifetime to a maximum of 1 year.</p>
-
+                        <p>Currently a vote is ongoing in the Server Certificate Working Group. The vote is with regards to the <a href="https://cabforum.org/pipermail/servercert-wg/2019-August/000894.html">SC22 ballot</a> that would limit certificate lifetime to a maximum of 1 year.</p>
 <p>Due to the discussion and controversy around SC I decided to dive into some data to see what the actual lifetime of certificates is in practice. Now any selection will be biased to some degree. However taking the Alexa top 1 million crawls seems like a fair selection and should provide insights into the biggest websites out there.</p>
-
 <p>The data source used can be found at: <a href="https://scans.io/data/scotthelme/alexaTop1Million/11-08-2019.zip">https://scans.io/data/scotthelme/alexaTop1Million/11-08-2019.zip</a></p>
-
 <p>Still not all websites use encrypted communication (shame on them!) but of those 1 million in the dump 471665 do. Filtering out obvious bad/invalid certificates (CA certificates, lifetime of more than 825 days) and we are left with 411241 certificates to analyze.</p>
-
 <p>For full transparency I am in favor of SC22 passing. But I am just curious of the current state of affairs in regards to the ballot.</p>
-
 <h1 id="methodology">Methodology</h1>
-
 <p>The data is imported into a local database. And after which all the sites are analyzed. Since we only care about websites with certificates all the other ones are discarded. Of the websites with certificates present only the first certificate in the chain in analyzed.</p>
-
 <h1 id="certificate-lifetimes">Certificate lifetimes</h1>
-
 <p>As a first step all the certificates were analyzed with their start and expiration date. This gives the most interesting metrics already. The first thing that pops out is the wide range. The minimum certificate lifetime found is 7 days and the largest is 825 days (the maximum allowed).</p>
-
-<p>After some more number crunching this gives an average lifetime of ~261.6 days. With a standard deviation of 197.9 days. Clearly the spread is quite large when we consider certificate lifetimes. But the good news is that the &laquo;average&raquo; certificate would not have to be changed with regards to SC22.</p>
-
+<p>After some more number crunching this gives an average lifetime of ~261.6 days. With a standard deviation of 197.9 days. Clearly the spread is quite large when we consider certificate lifetimes. But the good news is that the &ldquo;average&rdquo; certificate would not have to be changed with regards to SC22.</p>
 <p>Besides the average the mean is also an interesting metric. The center value at 50%. This is 190 days. Again a good sign that a majority of certificates is already doing what SC22 proposes.</p>
-
 <h2 id="how-many-certificates-are-we-talking-about">How many certificates are we talking about?</h2>
-
 <p>This leads to the next question in the analysis. What percentage of certificates is valid for X days or less. Calculating this yields some interesting results. It turns out the number of certificates with really short lifetimes is small. But we see a huge jump at 90 days. 45.6% of all certificates has a lifetime of 90 days or less. Of course we know this lifetime all to well from Let’s Encrypt. And further analysis shows that this is indeed where the vast majority of those 90 days certificates comes from. That means that a lot of website are already using automation!</p>
-
 <p>The next significant jump comes at 190 days. 54.6% off all certificates have a lifetime of less than that.</p>
-
 <p>Followed by jumps at 356 (71.4%) and 366 (76.0%). Then there is a short climb. But already after 395 days we are at more than 80% of certificates. More than 90% comes after 732 days (~2 years). And more than 99% of certificates is covered after at 814 days.</p>
-
 <h1 id="what-does-this-data-tell-us">What does this data tell us?</h1>
-
 <p>Now that we have all the data I&rsquo;m going to make some assumptions to simplify things. I feel the 395 day lifetime of certificates is not far enough away from 365 days to warrant a special status. If you can renew your certificate every 395 days you can also do it once a year. My bet is the ~400 days are people that renewed their old certificate before the year was over and the provider of the certificate added the remaining days to their new certificate.</p>
-
 <p>With the assumption above in consideration we can see that already more than 80% would fit within what is proposed in SC22. As the vast majority of certificates is already renewed once a year.</p>
-
 <p>It also tells us that about 10% of the certificates have to be renewed somewhere in the range of 1 to 2 years. Which mean for at least part of those certificates the change to switch to certificates with a lifetime of at most a year is rather minimal.</p>
-
 <h1 id="conclusions">Conclusions</h1>
-
 <p>This short analysis shows us that from the Alexa Top 1 Million the websites using a certificate at least 80% would not be affected by the SC22 ballot. This is of course already great news on its own.</p>
-
 <p>Of course the remaining 20% is not insignificant. However I feel it is worth to point out that often discounts are provided for multi-year certificates. Which could be an incentive at the moment to buy them. But there can be many other reasons those 20% chose for longer certificates.</p>
-
 <p>I hope this short analysis provided you with some insights. And I&rsquo;m curious to hear what your thoughts are!</p>
-
 <h2 id="acknowledgements">Acknowledgements</h2>
-
 <p>As the observant reader can already see the scan data was provided by <a href="https://scotthelme.co.uk/">Scott Helme</a>, to be exact from <a href="https://crawler.ninja/">crawler.ninja</a>. Also thanks to Scott for going over my initial analysis and proposing some improvements.</p>
 
                     </div>
@@ -156,33 +130,26 @@
 things conflict. In the last few months we have been working hard to
 make sure that two-factor authentication is easy to setup and easy to use
 for all users!</p>
-
 <p>Without much further delay. I&rsquo;m proud to introduce the next step in two-factor
 authentication the <em>It is really me - Provider</em>.</p>
-
 <blockquote>
 <p>Note: the app is still under heavy development. Still we appreciate testing
 and feedback!</p>
 </blockquote>
-
 <p>This provider as a second factor
 just presents the user with a button with the explicit instructions when to press it.
 Now a legitimate user can safely press the button and an evil hacker will
 most likely follow the clear instuctions and try to find another attack point.</p>
-
 <p>Writing a two-factor provider in Nextcloud is extremely simple. And I urge all developers
 to have a look at the code to see how easy it is.</p>
-
 <p>The heart of the app is the Provider Class that implements
 <code>OCP\Authentication\TwoFactorAuth\IProvider</code>.
 This intreface guides you with just a few
 methods to contructs your provider. On top of that we also chose to in this case
 implement the
 <code>OCP\Authentication\TwoFactorAuth\IProvidesPersonalSettings</code>.</p>
-
 <p>If we have a quick look at the actual functions you can see there is not much magic:</p>
-
-<pre><code class="language-php">	/**
+<pre tabindex="0"><code>	/**
 	 * Get unique identifier of this 2FA provider
 	 *
 	 * @return string
@@ -197,7 +164,7 @@ implement the
 	 * @return string
 	 */
 	public function getDisplayName(): string {
-		return $this-&gt;l10n-&gt;t('It is really me');
+		return $this-&gt;l10n-&gt;t(&#39;It is really me&#39;);
 	}
 
 	/**
@@ -206,7 +173,7 @@ implement the
 	 * @return string
 	 */
 	public function getDescription(): string {
-		return $this-&gt;l10n-&gt;t('Easy and secure validation of user');
+		return $this-&gt;l10n-&gt;t(&#39;Easy and secure validation of user&#39;);
 	}
 
 	/**
@@ -216,8 +183,8 @@ implement the
 	 * @return Template
 	 */
 	public function getTemplate(IUser $user): Template {
-		$tmpl = new Template(Application::APP_ID, 'challenge');
-		$tmpl-&gt;assign('user', $user-&gt;getDisplayName());
+		$tmpl = new Template(Application::APP_ID, &#39;challenge&#39;);
+		$tmpl-&gt;assign(&#39;user&#39;, $user-&gt;getDisplayName());
 		return $tmpl;
 	}
 
@@ -239,7 +206,7 @@ implement the
          * @return bool
          */
 	public function isTwoFactorAuthEnabledForUser(IUser $user): bool {
-		return $this-&gt;config-&gt;getAppValue(Application::APP_ID, $user-&gt;getUID() . '_enabled', '0') === '1';
+		return $this-&gt;config-&gt;getAppValue(Application::APP_ID, $user-&gt;getUID() . &#39;_enabled&#39;, &#39;0&#39;) === &#39;1&#39;;
 	}
 
 	/**
@@ -250,19 +217,14 @@ implement the
          */
 	public function getPersonalSettings(IUser $user): IPersonalProviderSettings {
 		return new Personal(
-			$this-&gt;config-&gt;getAppValue(Application::APP_ID, $user-&gt;getUID() . '_enabled', '0') === '1',
+			$this-&gt;config-&gt;getAppValue(Application::APP_ID, $user-&gt;getUID() . &#39;_enabled&#39;, &#39;0&#39;) === &#39;1&#39;,
 			$this-&gt;initialStateService
 		);
 	}
-</code></pre>
-
-<p>All the other logic in the app is just more helper functions. Some php classes to allow enabling the
+</code></pre><p>All the other logic in the app is just more helper functions. Some php classes to allow enabling the
 providers. Some javascript to make the frontend work nicely etc.</p>
-
 <p>Of course now you want to see how it looks:</p>
-
-<p><img src="/static/images/posts/2FA-ItIsReallyMe/login.png" alt="" class="pure-img" ></p>
-
+<!-- raw HTML omitted -->
 <p>Testing is much appreciated, as well as feedback, suggestions or pull requests. Please all leave them at <a href="https://github.com/rullzer/twofactor_itisreallyme">github</a>.</p>
 
                     </div>
@@ -284,26 +246,19 @@ providers. Some javascript to make the frontend work nicely etc.</p>
                         <p>I&rsquo;m happy to announce a new two-factor provider for your Nextcloud: the
 <em>Notifications Provider</em>. This provider utilizes your existing logged in
 devices to grant new devices access to your Nextcloud.</p>
-
 <blockquote>
 <p>Note: the app is still under heavy development. Still we appreciate testing
 and feedback!</p>
 </blockquote>
-
 <p>The flow is simple. You enable the provider in your personal security settings.
 Then the next time you log in you can chose to authenticate using a device that
 is already logged in to your account.</p>
-
-<p><img src="/static/images/posts/2FA-Notifications/login.png" alt="" class="pure-img" ></p>
-
+<!-- raw HTML omitted -->
 <p>Now a notification is dispatched. This is delivered to all your devices, which
 means that you even get push notifications! That might just look something like:</p>
-
-<p><img src="/static/images/posts/2FA-Notifications/android_push.png" alt="" class="pure-img" ></p>
-
+<!-- raw HTML omitted -->
 <p>You can approve or cancel the login from any of your devices. If you approved
 the login then you will be automatically logged in.</p>
-
 <p>You can grab the app from the <a href="https://apps.nextcloud.com/apps/twofactor_nextcloud_notification">app store</a>. And
 your feedback, suggestions or pull requests are welcome on <a href="https://github.com/nickv-nextcloud/twofactor_nextcloud_notification">github</a>.</p>
 
@@ -323,26 +278,15 @@ your feedback, suggestions or pull requests are welcome on <a href="https://gith
                     </header>
 
                     <div class="post-description">
-                        
-
-<p>A Content Security Policy (<em>CSP</em>) can be used to protect against Cross Site Scripting (<em>XSS</em>) attacks. This is done by having the server tell the browser what resources (executable script, images, etc) can be loaded from where. All this is told to the browser via a header, so if the actual page tries to do something it is not allowed the browser will block it.</p>
-
+                        <p>A Content Security Policy (<em>CSP</em>) can be used to protect against Cross Site Scripting (<em>XSS</em>) attacks. This is done by having the server tell the browser what resources (executable script, images, etc) can be loaded from where. All this is told to the browser via a header, so if the actual page tries to do something it is not allowed the browser will block it.</p>
 <p>At Nextcloud we have deployed a <em>CSP</em> for a while now that limited the resources to be loaded mainly to the domain your Nextcloud is running on. So by default it is not possible to load a random script from somewhere on the web.</p>
-
 <p>We also added a nonce so that only javascript with the proper nonce set would even get execute by (modern) browsers.</p>
-
 <p>Now because of the way a lot of our javascript code and a lot of 3rdparty javascript code was written we did allow <strong>unsafe-eval</strong>. Which allowed the execution of <strong>eval</strong>. This function is probably best known for being a well known <em>XSS</em> attack vector.</p>
-
 <h1 id="dropping-unsafe-eval">Dropping unsafe-eval</h1>
-
 <p>Of course I would not be writing this if we did not change anything about this behavior. Which brings me to Nextcloud 15 where we will disallow <strong>unsafe-eval</strong> by default in our <em>CSP</em>. This means that your Nextcloud will, by default, not permit execution of <strong>eval</strong>. Which results in a safer Nextcloud.</p>
-
 <h2 id="information-for-developers">Information for developers</h2>
-
 <p>We have tried to make the transition to a stricter <em>CSP</em> as smooth as possible. However it could be that if you have written a Nextcloud app that you need to take action.</p>
-
 <p>We are actively checking applications if they still work as expected and submitting pull requests. But of course help is appreciated. The easiest way to verify is to download the latest <a href="https://download.nextcloud.com/server/daily/latest-master.zip">Nextcloud daily</a> and try out your app. Be sure to have your developer tools open and keep an eye on the console. If the <em>CSP</em> is violated a message will be shown there.</p>
-
 <p>If you need help feel free to mention me (<em>@rullzer</em>) on github or drop by in <a href="https://webchat.freenode.net/">#nextcloud-dev on Freenode</a>.</p>
 
                     </div>
@@ -361,62 +305,47 @@ your feedback, suggestions or pull requests are welcome on <a href="https://gith
                     </header>
 
                     <div class="post-description">
-                        
-
-<p>The <em>app passwords</em> have been available in Nextcloud for some time now. They were
+                        <p>The <em>app passwords</em> have been available in Nextcloud for some time now. They were
 first introduced when we added second factor authentication to Nextcloud, as
 you still want to have a way to connect your mobile and desktop clients to
 your account. In the early days this was all manual labor.</p>
-
 <p>In the last year we have added support for <em>app passwords</em> to our mobile clients
 and the desktop client is following soon. This means that you authenticate
 when you setup your account using a normal login (with second factor
 authentication if required). A long random (72 character) <em>app password</em> is
 generated for you.</p>
-
 <p><em>App passwords</em> have several advantages. For example your real password is never
 stored on your devices. Also you can revoke access to a specific device in
 your security settings of your Nextcloud, blocking your lost phone from
 accessing your data. All pretty sweet.</p>
-
 <h2 id="apppasswords-original-design">AppPasswords original design</h2>
-
 <p>Now on to explaining how <em>app passwords</em> used to work.</p>
-
 <p>Nextcloud never stores your password in plain text. And this means we
 also never store your <em>app password</em> in plain text. Roughly what we stored are
 three things:</p>
-
 <ol>
 <li>your username</li>
 <li>a hash of your <em>app password</em></li>
 <li>your password symmetrically encrypted with the <em>app password</em></li>
 </ol>
-
 <p>This means that if you authenticate with your <code>(userName, appPassword)</code> we do the
 following:</p>
-
 <ol>
 <li><code>appPasswordHash = hash(appPassword)</code></li>
 <li>Lookup <code>(userName, appPasswordHash)</code> in the table</li>
 <li><code>password = decrypt_symmetric(encryptedPassword, appPassword)</code></li>
 <li>validate your password against your user back-end</li>
 </ol>
-
 <h2 id="improvements">Improvements</h2>
-
 <p>The main draw back of our first implementation is that when a user changed their
 password this means that all their <em>app passwords</em> are invalid. This is caused by
 the password being encrypted by the <em>app password</em> and only the hash being stored in
 the database.</p>
-
 <p>So to overcome this issue we needed to find a solution to update the encrypted
 password without knowing the actual <em>app passwords</em>. The answer to this is public key
 cryptography.</p>
-
 <p>This means a few changes as a first step we generate a RSA key pair. then
 we store the following:</p>
-
 <ol>
 <li>your username</li>
 <li>a hash of your <em>app password</em></li>
@@ -424,9 +353,7 @@ we store the following:</p>
 <li>your public key</li>
 <li>your password encrypted with your public key</li>
 </ol>
-
 <p>Now the flow when your login with <code>(userName, appPassword)</code> changes slightly.</p>
-
 <ol>
 <li><code>appPasswordHash = hash(appPassword)</code></li>
 <li>Lookup <code>(userName, appPasswordHash)</code> in the table</li>
@@ -434,29 +361,22 @@ we store the following:</p>
 <li><code>password = decrypt(EncryptedPassword, privateKey)</code></li>
 <li>validate your password against your user back-end</li>
 </ol>
-
 <p>Now to update your password we simply fetch all the <em>app passwords</em> for a user. And
 for each <em>app password</em> encrypt the new password with their public key.</p>
-
 <blockquote>
 <p>Note: we don&rsquo;t actually get the <em>app passwords</em> form the database just the
 rows with hashed <em>app passwords</em>. However, for this step we don&rsquo;t rely on the
 actual <em>app password</em>.</p>
 </blockquote>
-
 <h3 id="migration">Migration</h3>
-
 <p>To make things as smooth as possible we made sure that migration to the new
 <em>app passwords</em> is transparent to the user. Your old <em>app passwords</em> will not be
 invalidated. Instead the first time you use them they will automatically be
 converted. So from a user perspective nothing changes.</p>
-
 <h2 id="future-work">Future work</h2>
-
 <p>We feel that this improvement brings <em>app passwords</em> to a new level. Not having
 to re-authenticate your devices when you change your password makes the user
 experience a lot better.</p>
-
 <p>Of course there is room for improvement. Currently the <em>app passwords</em> are only
 updated when you use our default user back-end. If you use for example LDAP then Nextcloud never gets told the new password. We are already working on improving
 this in Nextcloud 15! So stay tuned!</p>
@@ -481,23 +401,19 @@ this in Nextcloud 15! So stay tuned!</p>
 at Nextcloud. He mentioned how he oftened wanted to just share a file
 quickly with somebody or just share some text. Basically your own
 privately hosted pastebin.</p>
-
 <p>This got me thinking about the amount of files that are stored on my
 Nextcloud that are just sitting there because I wanted to quickly share
 them with somebody but I forgot to delete them afterwrads. So long story
 short I decided to spend some time to write a little Nextcloud app that
 allows you to do this.</p>
-
-<p>So I\&rsquo;m excited to introduce
+<p>So I'm excited to introduce
 <a href="https://apps.nextcloud.com/apps/dropit">DropIt</a> to the world. It is
 available in the app store for Nextcloud 13!</p>
-
 <p>The app ties together a lot of functionality already available in
 Nextcloud. There is a simple interface to upload your files or text (any
 help on the UI/UX side is appreciated!). And a cron job that deletes
 files older than 2 weeks.</p>
-
-<p>So go check it out. And I\&rsquo;m looking forward to all your pull requests
+<p>So go check it out. And I'm looking forward to all your pull requests
 to the <a href="https://github.com/rullzer/dropit">github repository</a>.</p>
 
                     </div>
@@ -520,27 +436,21 @@ to the <a href="https://github.com/rullzer/dropit">github repository</a>.</p>
 <a href="https://github.com/probonopd">probonopd</a> made an AppImage for the
 Nextcloud Desktop Client. I must admit that back then I did not
 immediately try it out since I just run the client from source.</p>
-
 <p>However, this has changed over the last few weeks as we wanted to start
 providing binary packages for Linux as well. When I was reading up on
 AppImage I got more excited. And since there already was a script to
 generate the AppImage I quickly built my very first AppImage.</p>
-
-<p>So I\&rsquo;m proud to present to you the <a href="https://download.nextcloud.com/desktop/prereleases/Linux/">Nextcloud Desktop Client
+<p>So I'm proud to present to you the <a href="https://download.nextcloud.com/desktop/prereleases/Linux/">Nextcloud Desktop Client
 AppImage</a>.
 This is an AppImage of the latest beta.</p>
-
 <p>Here is a step by step guide on how to run the AppImage:</p>
-
 <ol>
 <li>Download the AppImage</li>
 <li>Make the AppImage executable</li>
 <li>Run the AppImage</li>
 </ol>
-
 <p>If you made it this far! Congratulations. You are now running the
 Nextcloud desktop client from the AppImage!</p>
-
 <p>Feedback is welcome at
 <a href="https://help.nextcloud.com/t/nextcloud-desktop-client-appimage/13307">help.nextcloud.com</a></p>
 
@@ -560,61 +470,46 @@ Nextcloud desktop client from the AppImage!</p>
                     </header>
 
                     <div class="post-description">
-                        
-
-<p>If you store images on your Nextcloud there is a big change that you
+                        <p>If you store images on your Nextcloud there is a big change that you
 have previews enabled. Previews are used for the tiny thumbnails in the
 file list but also for scaled down images in gallery for example.
 Because nobody wants transfer their 30 mega pixel photos all the time.</p>
-
 <p>In Nextcloud 11 we have several nice improvements for you regarding
 previews. Including an shiny new app to pre-generate previews!</p>
-
 <h2 id="serving-previews">Serving previews</h2>
-
 <p>First of all we changed the way previews are served to the end user. If
 a preview was generated we would first construct an image object in
 memory and then serve the data from that image to the user. This created
 a lot of overhead.</p>
-
 <p>So the first step is skipping the image parsing in memory. If a preview
 is created once we just serve the data from that file. This saves
 precious RAM and CPU cycles.</p>
-
 <h2 id="etag-validation">Etag validation</h2>
-
 <p>By default we cache previews for 24 hours. However, after those 24 hours
 we would just request the same preview object again. While for a
 majority of the preview files nothing would have changed at all.</p>
-
 <p>We now actually look at the headers a client sends us and if it is the
 same file (etag/last modified date). We just return the good old 304
 status code. To indicate nothing has changed. We can do this by just
 accessing the database. So no need to go to the slow storage unless we
 have to actually serve preview data.</p>
-
 <h2 id="limiting-preview-sizes">Limiting preview sizes</h2>
-
 <p>Let say you request a preview of an image of 250 by 250. But the next
 time you request an image of 252 by 252. Now it makes no sense to
 generate a new preview. We should serve similar preview sizes as the
 same file. There was already some code that handled this but we upgraded
 it in Nextcloud 11.</p>
-
 <p>The algorithm we use now rounds your image up to the nearest power of 2.
 So you get at least an image of the size you requested but it might be a
 bit bigger. But your browser is also very good at resizing it a bit for
 you then. This makes sure that your disk does not fill up with 10K
 previews per file and that the server can often just serve the same
 file.</p>
-
 <h2 id="shared-previews">Shared previews</h2>
-
 <p>Up until now we would generate previews per user. So if Alice shared a
 folder full of their holiday pictures with Bob we could generate
 previews for both Alice and Bob. This separation lead to multiple
 issues:</p>
-
 <ul>
 <li>Double the space required</li>
 <li>Double the CPU cycles for preview generation</li>
@@ -622,28 +517,21 @@ issues:</p>
 <li>When Bob opens the folder all the previews still have to be
 generated which requires him to wait until he can browse them</li>
 </ul>
-
 <p>As of Nextcloud 11 we share previews. Which means that we have a single
 location to store previews. This solves the problems Alice and Bob had
 as described above.</p>
-
 <h2 id="pre-generation">Pre-generation</h2>
-
 <p>The downside of the new preview approach is that we need to drop all the
 existing previews. Because of certain bugs in the old preview system
 just moving stuff over is not possible.</p>
-
 <p>To over come this we have been working on an app. This app allows you to
 do a one time run to generate all the previews.</p>
-
 <p>However the app is capable of doing more. It will listen to writes and
 keep a list of all those files. Then once you run a command it will
 start requesting previews for all those files. This can make your
 overall experience more smooth.</p>
-
 <p>That way you can lets your server generate previews during the night for
 example.</p>
-
 <p>Get the app in the <a href="https://apps.nextcloud.com/apps/previewgenerator">appstore</a>.</p>
 
                     </div>
@@ -667,17 +555,14 @@ of November. As a preparation for this we are already running our test
 suite against the PHP 7.1 RC1. And we feel confident that Nextcloud 11
 will run smoothly on the PHP 7.1 final for all you bleeding-edge
 sysadmins out there! But if you can&rsquo;t wait try out the <a href="https://download.nextcloud.com/server/daily/">daily</a>.</p>
-
 <p>At the same time we are adding PHP 7.1 to our support matrix we are also
 saying goodbye to some retired PHP versions. Nextcloud 11 will no longer
 support PHP 5.4 and 5.5. As you can see in the <a href="http://php.net/supported-versions.php">support matrix</a> both are
 no longer supported by upstream PHP.</p>
-
 <p>This change in supported PHP versions allows us to start updating
 several third party dependencies. Which bring bugfixes and (security)
 improvements. At the same time we could update <a href="https://phpunit.de/">PHPUnit</a> to take
 advantage of improvements there.</p>
-
 <p>All in all we feel these changes will allow us to improve our codebase
 and move Nextcloud forward. Happy hacking!</p>
 
@@ -704,13 +589,10 @@ second most used endpoint is the <a href="https://docs.nextcloud.com/server/10/d
 of clients that connect to your Nextcloud to share files. As the name
 suggest this is an OCS (Open-Collaboration-Services) API of which we
 have a few.</p>
-
 <p>The OCS API has been around for quite some time now. And it was in need
 for some love. Which is why I am glad to announce that starting from
 Nextcloud 11 you can build OCS API endpoints using our AppFramework.</p>
-
 <p>This brings a lot of improvements. Some examples:</p>
-
 <ul>
 <li>Automatic dependency injection: This makes writing code much more
 fun. Your Controllers just specify that is required and most of the
@@ -722,10 +604,8 @@ makes it harder to mess up.</li>
 <li>No more static classes: This will make it easier and faster to test
 your classes.</li>
 </ul>
-
 <p>And of course this also means your API will directly benefit from
 enhancements we make in the AppFramework.</p>
-
 <p>We will of course still support the current approach to create OCS API
 endpoints for the foreseeable future. Feel free to reach out to us on
 <a href="https://help.nextcloud.com/c/dev/app-dev">help.nextcloud.com</a> if you need help.</p>
